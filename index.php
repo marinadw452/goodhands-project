@@ -54,7 +54,8 @@ session_start();
   </div>
 </section>
 
-<script src="js/script.js"></script>
-<script src="js/golden-air.js"></script>
+<script src="script.js"></script>
+<script src="golden-air.js"></script>
 </body>
 </html>
+
