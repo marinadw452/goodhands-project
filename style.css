@@ -1,4 +1,243 @@
-body {
-  font-family: "Cairo", sans-serif;
-  background-color: #f8f8f8;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+/* ================= Navbar ================= */
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 10;
+  background: #f5e1c356;
+  height: 80px;
+}
+
+.navbar .logo {
+  height: 80px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ba7d37;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.nav-links li a {
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f7e57e;
+}
+
+/* ✨ تأثير التلاشي */
+.fade-link.clicked {
+  animation: textFade 0.8s forwards;
+}
+
+@keyframes textFade {
+  0% { opacity: 1; filter: blur(0); }
+  50% { opacity: 0.5; filter: blur(2px); transform: translateX(10px); }
+  100% { opacity: 0; filter: blur(5px); transform: translateX(30px); }
+}
+
+/* 🛒 أيقونة السلة */
+.cart-icon {
+  font-size: 28px;
+  color: #e7d56d;
+  cursor: pointer;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #FFD700;
+}
+
+/* زر تسجيل الدخول */
+#login-btn {
+  background-color: #f5e1c356;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+#login-btn:hover {
+  background-color:#f5e1c356;
+}
+
+/* أيقونة المستخدم */
+.user-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00b3ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+/* القائمة المنسدلة */
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  width: 180px;
+  text-align: right;
+  overflow: hidden;
+  z-index: 100;
+}
+.user-menu.active {
+  display: block;
+}
+.user-menu li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.user-menu li:hover {
+  background: #f3f3f3;
+}
+
+/* ================= Hero Section ================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider .slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+.hero-content .btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #F5E1C3;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.hero-content .btn:hover {
+  background-color: #E0CFA0;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 40px; }
+  .hero-content p { font-size: 18px; }
+  .navbar { padding: 15px 20px; }
+}
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 28px; }
+  .hero-content p { font-size: 14px; }
 }
