@@ -1,7 +1,8 @@
 <?php
+// نبدأ الجلسة حتى ما يعطي أخطاء لما نستخدم $_SESSION
 session_start();
-require_once "config.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,6 +12,7 @@ require_once "config.php";
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <nav class="navbar">
   <img src="images/LOGO.png" class="logo" alt="Logo">
   <ul class="nav-links">
