@@ -40,10 +40,10 @@ session_start();
 
 <section class="hero">
   <div class="slider">
-    <img src="images/4.webp" class="slide active" alt="صورة 1">
+    <img src="images/4.png" class="slide active" alt="صورة 1">
     <img src="images/123.png" class="slide" alt="صورة 2">
     <img src="images/11.png" class="slide" alt="صورة 3">
-    <img src="images/14.webp" class="slide" alt="صورة 4">
+    <img src="images/14.png" class="slide" alt="صورة 4">
   </div>
   <div class="overlay"></div>
   <div class="hero-content">
@@ -58,4 +58,5 @@ session_start();
 <script src="golden-air.js"></script>
 </body>
 </html>
+
 
