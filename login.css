@@ -13,9 +13,10 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(60%);
+    filter: brightness(55%);
 }
 
+/* الجسم */
 body {
     color: #fff;
     overflow: hidden;
@@ -24,19 +25,21 @@ body {
 /* البوكس */
 .box {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* يخلي الصندوق على اليمين */
     align-items: center;
-    min-height: 90vh;
-    padding: 0 15px; /* مسافة إضافية عن حواف الشاشة */
+    min-height: 100vh;
+    padding-right: 8%; /* مسافة من الطرف الأيمن */
 }
 
+/* الصندوق */
 .container {
-    width: 350px;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    padding: 0 25px; /* زودت البادينغ عشان الحقول لا تلمس الأطراف */
-    background: rgba(0,0,0,0.3);
-    border-radius: 15px;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.45); /* شفافية أكثر */
+    border-radius: 20px;
+    backdrop-filter: blur(10px); /* يعطي نعومة زجاجية */
 }
 
 span {
@@ -44,15 +47,14 @@ span {
     font-size: small;
     display: flex;
     justify-content: center;
-    padding: 10px 0 15px 0;
+    padding: 10px 0 5px 0;
 }
 
 header {
     color: #fff;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    padding: 0 0 15px 0; 
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .input-field {
@@ -63,25 +65,25 @@ header {
 }
 
 .input-field .input {
-    height: 45px;
+    height: 40px;
     width: 100%;
     border: none;
     outline: none;
     border-radius: 30px;
     color: #fff;
-    padding: 0 0 0 45px; /* مسافة من الطرف الأيسر */
-    background: rgba(255,255,255,0.1);
+    padding: 0 0 0 45px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 i {
     position: absolute;
-    top: 12px;
+    top: 10px;
     left: 15px;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
 }
 
-::-webkit-input-placeholder{
+::-webkit-input-placeholder {
     color: #fff;
 }
 
@@ -89,29 +91,25 @@ i {
     border: none;
     border-radius: 30px;
     font-size: 15px;
-    height: 45px;
+    height: 40px;
     outline: none;
     width: 100%;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     transition: .3s;
 }
-.submit:hover{
-    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+.submit:hover {
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
 }
 
 .bottom {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     font-size: small;
     color: #fff;
     margin-top: 10px;
 }
 
-.left {
-    display: flex;
-}
 label a {
     color: #fff;
     text-decoration: none;
