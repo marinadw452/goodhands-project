@@ -37,11 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<video autoplay muted loop id="bg-video">
-<source src="mm.mp4" type="video/mp4">
-
-  متصفحك لا يدعم الفيديو.
-</video>
 
 <div class="box">
   <div class="container">
