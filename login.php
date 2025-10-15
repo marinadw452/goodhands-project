@@ -41,26 +41,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="box">
   <div class="container">
     <div class="top-header">
-      <span>تسجيل الدخول</span>
-      <header>مرحباً بك في مجتمع الأيدي الطيبة</header>
+      <h1>تسجيل الدخول</h1>
+      <div class="input-box">
+          <input type="text" placeholder="username" required />
+          <!-- <i class="bx bxs-user"></i> -->
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="password" required />
+          <!-- <i class="bx bxs-lock-alt"></i> -->
+        </div>
+
+        <div class="remember-forgot">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <div class="register-link">
+          <p>Don't have an account? <a href="#">Register here!</a></p>
+        </div>
+      </form>
     </div>
-
-    <?php if($message != ""): ?>
-      <p style="color:red; text-align:center; margin-bottom:15px;"><?php echo $message; ?></p>
-    <?php endif; ?>
-
-    <form action="login.php" method="POST">
-      <div class="input-field">
-        <input type="text" name="username" class="input" placeholder="اسم المستخدم" required>
-      </div>
-      <div class="input-field">
-        <input type="password" name="password" class="input" placeholder="كلمة المرور" required>
-      </div>
-      <div class="input-field">
-        <input type="submit" class="submit" value="دخول">
-      </div>
-    </form>
-  </div>
-</div>
-</body>
+  </body>
 </html>
