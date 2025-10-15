@@ -1,18 +1,16 @@
 <?php
-// نبدأ الجلسة حتى ما يعطي أخطاء لما نستخدم $_SESSION
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Good Hands</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Hands</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+  
 <nav class="navbar">
   <img src="images/LOGO.png" class="logo" alt="Logo">
   <ul class="nav-links">
@@ -58,5 +56,6 @@ session_start();
 <script src="golden-air.js"></script>
 </body>
 </html>
+
 
 
