@@ -40,7 +40,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('mm.png') no-repeat center center fixed;
+  background: url('imges/mm.png') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   display: flex;
