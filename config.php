@@ -1,31 +1,20 @@
 <?php
-// ===============================
-// إعداد الاتصال بقاعدة البيانات (Railway Ready)
-// ===============================
-
-// نحاول جلب الـ DSN من متغير البيئة DATABASE_URL
 $dsn = getenv('DATABASE_URL');
 
 try {
     if ($dsn) {
-        // الاتصال باستخدام متغير البيئة
         $conn = new PDO($dsn);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } else {
-        // إذا المتغير غير موجود، fallback للاتصال المحلي (مثال)
+        // fallback للـ localhost
         $host = 'localhost';
         $dbname = 'goodhands_db';
         $username = 'root';
         $password = '';
         $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-
-    // إعدادات الأمان
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 } catch (Exception $e) {
-    // في حال فشل الاتصال
     $conn = null;
-    // يمكنك تسجيل الخطأ في ملف log لكن لا تعرضه للمستخدم النهائي
-    // error_log($e->getMessage());
 }
 ?>
