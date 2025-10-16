@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(https://c.wallhere.com/photos/da/70/digital_art_landscape_illustration_skyline-2285476.jpg!d) no-repeat;
+  background: url('mar.png') no-repeat center center fixed;
   background-size: cover;
   background-position: center;
 }
@@ -126,3 +126,4 @@ body {
 .register-link p a:hover {
   text-decoration: underline;
 }
+
