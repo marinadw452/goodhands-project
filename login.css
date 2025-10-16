@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('mar.png') no-repeat center center fixed;
+  background: url('mae.png') no-repeat center center fixed;
   background-size: cover;
   background-position: center;
 }
@@ -126,4 +126,5 @@ body {
 .register-link p a:hover {
   text-decoration: underline;
 }
+
 
