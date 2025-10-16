@@ -1,5 +1,5 @@
 * {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,10 +10,17 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
- background: url('MM.png') no-repeat center center fixed;
+  background: url('MM.png') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  #credits {position: fixed; bottom: 10px; right: 10px; color: rgb(255, 255, 255); font-size: 12px; font-family: Arial, sans-serif;}
+}
+
+#credits {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -92,11 +99,15 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  box-decoration-break: 0px 0px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   color: #333;
+  transition: 0.3s;
+}
+
+.container .btn:hover {
+  background-color: #f8f8f8;
 }
 
 .container .register-link {
@@ -114,6 +125,9 @@ body {
 .register-link p a:hover {
   text-decoration: underline;
 }
-                                         
-            
 
+.message {
+  color: #ffb6b6;
+  font-size: 14px;
+  text-align: center;
+}
