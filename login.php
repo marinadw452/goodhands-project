@@ -38,30 +38,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-  <div class="box">
-    <h1>تسجيل الدخول</h1>
+ <div class="input-box">
+          <input type="text" placeholder="username" required />
+          <!-- <i class="bx bxs-user"></i> -->
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="password" required />
+          <!-- <i class="bx bxs-lock-alt"></i> -->
+        </div>
 
-    <?php if($message != ""): ?>
-      <p class="message"><?php echo $message; ?></p>
-    <?php endif; ?>
+        <div class="remember-forgot">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
 
-    <form action="login.php" method="POST">
-      <div class="input-box">
-        <input type="text" name="username" placeholder="اسم المستخدم" required>
-      </div>
-      <div class="input-box">
-        <input type="password" name="password" placeholder="كلمة المرور" required>
-      </div>
-      <div class="remember-forgot">
-        <label><input type="checkbox"> تذكرني</label>
-        <a href="#">نسيت كلمة المرور؟</a>
-      </div>
-      <button type="submit" class="btn">دخول</button>
-      <div class="register-link">
-        <p>ليس لديك حساب؟ <a href="#">إنشاء حساب</a></p>
-      </div>
-    </form>
-  </div>
+        <button type="submit" class="btn">Login</button>
 
-</body>
+        <div class="register-link">
+          <p>Don't have an account? <a href="#">Register here!</a></p>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>
+            
