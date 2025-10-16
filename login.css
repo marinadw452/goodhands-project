@@ -1,5 +1,5 @@
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,8 +10,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('MM.png') no-repeat center center fixed;
+  background: url(https://c.wallhere.com/photos/da/70/digital_art_landscape_illustration_skyline-2285476.jpg!d) no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 #credits {
@@ -25,13 +26,18 @@ body {
 
 .container {
   width: 420px;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08); /* شفافية خفيفة للنافذة */
+  border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(18px);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
   color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 30px 40px;
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  background: rgba(255, 255, 255, 0.12); /* تزيد الإضاءة عند المرور */
 }
 
 .container h1 {
@@ -43,44 +49,39 @@ body {
   position: relative;
   width: 100%;
   height: 50px;
-  margin: 30px 0px;
+  margin: 30px 0;
 }
 
 .input-box input {
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.25); /* خلفية النصوص أوضح (أقل شفافية) */
   border: none;
   outline: none;
-  border: 2px solid rgb(255, 255, 255, 0.2);
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
   color: #fff;
   padding: 20px 45px 20px 20px;
+  transition: background 0.3s ease;
+}
+
+.input-box input:focus {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .input-box input::placeholder {
-  color: #fff;
-}
-
-.input-box i {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
+  color: #ddd;
 }
 
 .container .remember-forgot {
   display: flex;
   justify-content: space-between;
   font-size: 14.5px;
-  margin: -15px 0px 15px;
+  margin: -15px 0 15px;
 }
 
-.remember-forgot label input {
+.remember-forgot label {
   color: #fff;
-  margin-right: 3px;
 }
 
 .remember-forgot a {
@@ -98,7 +99,7 @@ body {
   background: #fff;
   border: none;
   outline: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
@@ -107,13 +108,13 @@ body {
 }
 
 .container .btn:hover {
-  background-color: #f8f8f8;
+  background: #ddd;
 }
 
 .container .register-link {
   font-size: 14.5px;
   text-align: center;
-  margin: 20px 0px 15px;
+  margin: 20px 0 15px;
 }
 
 .register-link p a {
@@ -124,10 +125,4 @@ body {
 
 .register-link p a:hover {
   text-decoration: underline;
-}
-
-.message {
-  color: #ffb6b6;
-  font-size: 14px;
-  text-align: center;
 }
