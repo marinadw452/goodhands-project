@@ -34,31 +34,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تسجيل الدخول - أيدي طيبة</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
+  <div id="credits">Made by Good Hands</div>
 
- <div class="input-box">
-          <input type="text" placeholder="username" required />
-          <!-- <i class="bx bxs-user"></i> -->
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="password" required />
-          <!-- <i class="bx bxs-lock-alt"></i> -->
-        </div>
+  <div class="container">
+    <form action="login.php" method="POST">
+      <h1>تسجيل الدخول</h1>
 
-        <div class="remember-forgot">
-          <label><input type="checkbox" /> Remember me</label>
-          <a href="#">Forgot password?</a>
-        </div>
+      <?php if($message != ""): ?>
+        <p class="message"><?php echo $message; ?></p>
+      <?php endif; ?>
 
-        <button type="submit" class="btn">Login</button>
+      <div class="input-box">
+        <input type="text" name="username" placeholder="اسم المستخدم" required>
+        <i class="bx bxs-user"></i>
+      </div>
 
-        <div class="register-link">
-          <p>Don't have an account? <a href="#">Register here!</a></p>
-        </div>
-      </form>
-    </div>
-  </body>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+
+      <div class="remember-forgot">
+        <label><input type="checkbox"> تذكرني</label>
+        <a href="#">نسيت كلمة المرور؟</a>
+      </div>
+
+      <button type="submit" class="btn">دخول</button>
+
+      <div class="register-link">
+        <p>ليس لديك حساب؟ <a href="#">إنشاء حساب</a></p>
+      </div>
+    </form>
+  </div>
+</body>
 </html>
-            
