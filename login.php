@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تسجيل الدخول - أيدي طيبة</title>
+  <img src="mm.png" class="dacgrwnd" alt="خلفيه">  
+    <title>تسجيل الدخول - أيدي طيبة</title>
 <link rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -43,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="top-header">
       <h1>تسجيل الدخول</h1>
       <div class="input-box">
-          <input type="text" placeholder="username" required />
+          <input type="text" placeholder="سم المستخدم" required />
           <!-- <i class="bx bxs-user"></i> -->
         </div>
         <div class="input-box">
-          <input type="password" placeholder="password" required />
+          <input type="password" placeholder="كلمة المرور" required />
           <!-- <i class="bx bxs-lock-alt"></i> -->
         </div>
 
