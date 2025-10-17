@@ -9,11 +9,26 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   background: url('mn.png') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
+  position: relative;
   color: #fff;
+  overflow: hidden;
+}
+
+/* ضبابية على كامل الصفحة */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 0;
 }
 
 /* النص السفلي */
@@ -24,38 +39,35 @@ body {
   color: rgba(245, 225, 195, 0.8);
   font-size: 12px;
   font-family: Arial, sans-serif;
+  z-index: 5;
 }
 
-/* النافذة الأساسية */
+/* نموذج تسجيل الدخول */
 .container {
-  width: 420px;
-  background: rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 2;
+  width: 400px;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(245, 225, 195, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-  color: #F5E1C3;
   border-radius: 20px;
   padding: 40px;
-  transition: all 0.3s ease;
-}
-
-.container:hover {
-  background: rgba(0, 0, 0, 0.55);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #F5E1C3;
 }
 
 /* العنوان */
 .container h1 {
   font-size: 34px;
   text-align: center;
-  color: #F5E1C3;
-  text-shadow: 0 0 12px rgba(245, 225, 195, 0.4);
   margin-bottom: 25px;
+  color: #F5E1C3;
+  text-shadow: 0 0 12px rgba(245, 225, 195, 0.3);
 }
 
 /* مدخلات النص */
-.container .input-box {
+.input-box {
   position: relative;
   width: 100%;
   height: 55px;
@@ -65,7 +77,7 @@ body {
 .input-box input {
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   outline: none;
   border-radius: 10px;
@@ -73,20 +85,23 @@ body {
   color: #fff;
   padding: 20px;
   box-shadow: inset 0 0 10px rgba(245, 225, 195, 0.1);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-box input:focus {
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 10px rgba(245, 225, 195, 0.3);
 }
 
-.input-box input::placeholder {
-  color: rgba(245, 225, 195, 0.7);
+/* الأيقونات */
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #F5E1C3;
 }
 
-/* تذكرني ونسيت كلمة المرور */
-.container .remember-forgot {
+/* تذكرني */
+.remember-forgot {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
@@ -97,53 +112,35 @@ body {
 .remember-forgot a {
   color: #f7e57e;
   text-decoration: none;
-  transition: 0.3s;
-}
-
-.remember-forgot a:hover {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(245, 225, 195, 0.5);
 }
 
 /* الزر */
-.container .btn {
+.btn {
   width: 100%;
   height: 45px;
   background: #F5E1C3;
   border: none;
-  outline: none;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   color: #000;
-  transition: 0.3s;
-  box-shadow: 0 0 15px rgba(245, 225, 195, 0.4);
+  transition: all 0.3s;
 }
 
-.container .btn:hover {
+.btn:hover {
   background: #E0CFA0;
-  box-shadow: 0 0 25px rgba(245, 225, 195, 0.6);
 }
 
 /* رابط التسجيل */
-.container .register-link {
-  font-size: 14.5px;
+.register-link {
+  font-size: 14px;
   text-align: center;
   margin: 25px 0 15px;
   color: #F5E1C3;
 }
 
-.register-link p a {
+.register-link a {
   color: #f7e57e;
   text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
 }
-
-.register-link p a:hover {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(245, 225, 195, 0.6);
-}
-
-
