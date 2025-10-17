@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     position: relative;
     width: 440px;
     height: 600px;
-    background: url('mae.png') no-repeat center center;
+    background: url('n1.png') no-repeat center center;
     background-size: cover;
     display: flex;
     justify-content: center;
