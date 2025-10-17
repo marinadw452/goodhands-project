@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('mae.png') no-repeat center center fixed;
+  background: url('MN.png') no-repeat center center fixed;
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -145,3 +145,4 @@ body {
   color: #fff;
   text-shadow: 0 0 8px rgba(245, 225, 195, 0.6);
 }
+
