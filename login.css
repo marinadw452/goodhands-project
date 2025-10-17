@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 150vh;
   background: url('mn.png') no-repeat center center fixed;
   background-size: cover;
   position: relative;
@@ -151,4 +151,5 @@ body::before {
   color: #f7e57e;
   text-decoration: none;
 }
+
 
