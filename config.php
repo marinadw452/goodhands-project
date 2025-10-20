@@ -1,28 +1,14 @@
 <?php
-// ===============================
-// إعداد الاتصال بقاعدة البيانات (Railway Ready)
-// ===============================
-
-// جلب DSN من متغير البيئة
-$dsn = getenv('DATABASE_URL');
+$host = getenv("PGHOST") ?: "containers-us-west-92.railway.app";
+$port = getenv("PGPORT") ?: "5432";
+$dbname = getenv("PGDATABASE") ?: "railway";
+$user = getenv("PGUSER") ?: "postgres";
+$password = getenv("PGPASSWORD") ?: "xxxxxxxxxxxxxxxx";
 
 try {
-    if ($dsn) {
-        // الاتصال بالقاعدة على Railway
-        $conn = new PDO($dsn);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } else {
-        // fallback للاتصال المحلي (لتطوير محلي)
-        $host = 'localhost';
-        $dbname = 'goodhands_db';
-        $username = 'root';
-        $password = '';
-        $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-} catch (Exception $e) {
-    $conn = null;
-    // يمكنك تسجيل الخطأ في log إذا أحببت
-    // error_log($e->getMessage());
+    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("فشل الاتصال بقاعدة البيانات: " . $e->getMessage());
 }
 ?>
