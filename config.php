@@ -1,9 +1,9 @@
 <?php
-$host = getenv("PGHOST") ?: "containers-us-west-92.railway.app";
-$port = getenv("PGPORT") ?: "5432";
-$dbname = getenv("PGDATABASE") ?: "railway";
-$user = getenv("PGUSER") ?: "postgres";
-$password = getenv("PGPASSWORD") ?: "xxxxxxxxxxxxxxxx";
+$host = getenv("PGHOST") 
+$port = getenv("PGPORT") 
+$dbname = getenv("PGDATABASE") 
+$user = getenv("PGUSER") 
+$password = getenv("PGPASSWORD")
 
 try {
     $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
