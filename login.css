@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #ba7d37;
+  background: #f5e1c356;
   color: #fff;
   overflow: hidden;
 }
@@ -179,5 +179,6 @@ body {
   font-size: 12px;
   font-family: Arial, sans-serif;
 }
+
 
 
