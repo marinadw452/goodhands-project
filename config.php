@@ -1,5 +1,6 @@
 <?php
 $host = getenv("PGHOST");
+$DATABASE_URL = getenv("DATABASE_URL");
 $port = getenv("PGPORT");
 $dbname = getenv("PGDATABASE");
 $user = getenv("PGUSER");
