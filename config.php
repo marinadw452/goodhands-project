@@ -1,12 +1,10 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 $databaseUrl = getenv("DATABASE_URL");
 
 try {
     if ($databaseUrl) {
-        // اتصال مباشر بـ DATABASE_URL
+        // تعديل URL ليكون متوافق مع PDO
+        $databaseUrl = str_replace("postgres://", "pgsql://", $databaseUrl);
         $conn = new PDO(
             $databaseUrl,
             null,
@@ -17,7 +15,6 @@ try {
             ]
         );
     } else {
-        // اتصال باستخدام المتغيرات المفصلة
         $host = getenv("PGHOST");
         $port = getenv("PGPORT");
         $dbname = getenv("PGDATABASE");
@@ -34,7 +31,18 @@ try {
             ]
         );
     }
+
+    // إنشاء جدول المستخدمين إن لم يكن موجود
+    $conn->exec("
+        CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            username VARCHAR(100) UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ");
+
 } catch (PDOException $e) {
-    die("❌ فشل الاتصال بقاعدة البيانات: " . $e->getMessage());
+    die('فشل الاتصال بقاعدة البيانات: ' . $e->getMessage());
 }
 ?>
