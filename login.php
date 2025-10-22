@@ -5,25 +5,38 @@ require_once "config.php";
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
+    $username = trim($_POST['username']);
     $password_plain = $_POST['password'];
 
     if (empty($username) || empty($password_plain)) {
-        $message = "⚠️ أدخل اسم مستخدم وكلمة مرور.";
+        $message = "أدخل اسم مستخدم وكلمة مرور.";
     } else {
-        $password_hashed = password_hash($password_plain, PASSWORD_DEFAULT);
         try {
-            $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username");
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password_hashed);
             $stmt->execute();
-            $message = "✅ تم التسجيل بنجاح.";
-        } catch (PDOException $e) {
-            if ($e->getCode() == 23000) {
-                $message = "⚠️ اسم المستخدم موجود بالفعل.";
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                if (password_verify($password_plain, $user['password'])) {
+                    $_SESSION['username'] = $username;
+                    header("Location: index.php");
+                    exit;
+                } else {
+                    $message = "كلمة المرور غير صحيحة.";
+                }
             } else {
-                $message = "❌ خطأ: " . $e->getMessage();
+                $password_hashed = password_hash($password_plain, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':password', $password_hashed);
+                $stmt->execute();
+                $_SESSION['username'] = $username;
+                header("Location: index.php");
+                exit;
             }
+        } catch (PDOException $e) {
+            $message = "خطأ في قاعدة البيانات: " . $e->getMessage();
         }
     }
 }
@@ -42,7 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="form-container">
       <form method="POST">
         <h1>تسجيل الدخول</h1>
-        <?php if($message != ""): ?>
+
+        <?php if ($message != ""): ?>
           <p class="message"><?php echo $message; ?></p>
         <?php endif; ?>
 
@@ -56,20 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <i class="bx bxs-lock-alt"></i>
         </div>
 
-        <div class="remember-forgot">
-          <label><input type="checkbox"> تذكرني</label>
-          <a href="#">نسيت كلمة المرور؟</a>
-        </div>
-
-        <button type="submit" class="btn">دخول</button>
-
-        <div class="register-link">
-          <p>ليس لديك حساب؟ <a href="#">إنشاء حساب</a></p>
-        </div>
+        <button type="submit" class="btn">دخول / تسجيل</button>
       </form>
     </div>
-
-    <div class="overlay-container"></div>
   </div>
 </body>
 </html>
