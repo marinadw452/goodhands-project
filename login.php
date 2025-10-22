@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "config.php"; // إعدادات قاعدة البيانات
+require_once "config.php";
 
 $message = "";
 
@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password_plain = $_POST['password'];
 
-    if(empty($username) || empty($password_plain)){
-        $message = "أدخل اسم مستخدم وكلمة مرور.";
+    if (empty($username) || empty($password_plain)) {
+        $message = "⚠️ أدخل اسم مستخدم وكلمة مرور.";
     } else {
         $password_hashed = password_hash($password_plain, PASSWORD_DEFAULT);
         try {
@@ -17,12 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $password_hashed);
             $stmt->execute();
-            $message = "تم التسجيل بنجاح.";
-        } catch(PDOException $e){
-            if($e->getCode() == 23000){
-                $message = "اسم المستخدم موجود بالفعل.";
+            $message = "✅ تم التسجيل بنجاح.";
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
+                $message = "⚠️ اسم المستخدم موجود بالفعل.";
             } else {
-                $message = "خطأ: " . $e->getMessage();
+                $message = "❌ خطأ: " . $e->getMessage();
             }
         }
     }
@@ -39,11 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
   <div class="container">
-    <!-- نموذج يسار -->
     <div class="form-container">
       <form method="POST">
         <h1>تسجيل الدخول</h1>
-
         <?php if($message != ""): ?>
           <p class="message"><?php echo $message; ?></p>
         <?php endif; ?>
@@ -71,10 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
     </div>
 
-    <!-- صورة يمين -->
     <div class="overlay-container"></div>
   </div>
-
-  <div id="credits">Made by Good Hands</div>
 </body>
 </html>
