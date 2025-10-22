@@ -11,7 +11,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #f5e1c356;
-  color: #fff;
+  color: #0f0e0e;
   overflow: hidden;
 }
 
@@ -62,7 +62,7 @@ body {
   outline: none;
   border-radius: 10px;
   font-size: 16px;
-  color: #fff;
+  color: #0b0707;
   padding: 10px 15px;
   box-shadow: inset 0 0 10px rgba(245,225,195,0.1);
   transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -101,7 +101,7 @@ body {
 }
 
 .remember-forgot a:hover {
-  color: #fff;
+  color: #0c0101;
   text-shadow: 0 0 8px rgba(245,225,195,0.5);
 }
 
@@ -142,7 +142,7 @@ body {
 }
 
 .register-link p a:hover {
-  color: #fff;
+  color: #100202;
   text-shadow: 0 0 8px rgba(245,225,195,0.6);
 }
 
@@ -179,6 +179,7 @@ body {
   font-size: 12px;
   font-family: Arial, sans-serif;
 }
+
 
 
 
