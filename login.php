@@ -1,81 +1,54 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 require_once "config.php";
-
 
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
-    $password_plain = $_POST['password'];
+    $password_plain = trim($_POST['password']);
 
     if (empty($username) || empty($password_plain)) {
-        $message = "أدخل اسم مستخدم وكلمة مرور.";
+        $message = "الرجاء إدخال اسم المستخدم وكلمة المرور.";
     } else {
-        try {
-            $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username");
-            $stmt->bindParam(':username', $username);
-            $stmt->execute();
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // البحث عن المستخدم في قاعدة البيانات
+        $result = pg_query_params($conn, "SELECT * FROM users WHERE username = $1", [$username]);
+        $user = pg_fetch_assoc($result);
 
-            if ($user) {
-                if (password_verify($password_plain, $user['password'])) {
-                    $_SESSION['username'] = $username;
-                    header("Location: index.php");
-                    exit;
-                } else {
-                    $message = "كلمة المرور غير صحيحة.";
-                }
-            } else {
-                $password_hashed = password_hash($password_plain, PASSWORD_DEFAULT);
-                $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':password', $password_hashed);
-                $stmt->execute();
-                $_SESSION['username'] = $username;
-                header("Location: index.php");
-                exit;
-            }
-        } catch (PDOException $e) {
-            $message = "خطأ في قاعدة البيانات: " . $e->getMessage();
+        if ($user && password_verify($password_plain, $user['password'])) {
+            // تسجيل الجلسة
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+
+            // إعادة التوجيه إلى الصفحة الرئيسية
+            header("Location: index.php");
+            exit;
+        } else {
+            $message = "اسم المستخدم أو كلمة المرور غير صحيحة.";
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تسجيل الدخول - أيدي طيبة</title>
-  <link rel="stylesheet" href="login.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول</title>
 </head>
 <body>
-  <div class="container">
-    <div class="form-container">
-      <form method="POST">
-        <h1>تسجيل الدخول</h1>
+    <form method="POST">
+        <label>اسم المستخدم:</label>
+        <input type="text" name="username" required><br>
 
-        <?php if ($message != ""): ?>
-          <p class="message"><?php echo $message; ?></p>
-        <?php endif; ?>
+        <label>كلمة المرور:</label>
+        <input type="password" name="password" required><br>
 
-        <div class="input-box">
-          <input type="text" name="username" placeholder="اسم المستخدم" required>
-          <i class="bx bxs-user"></i>
-        </div>
+        <button type="submit">دخول</button>
+    </form>
 
-        <div class="input-box">
-          <input type="password" name="password" placeholder="كلمة المرور" required>
-          <i class="bx bxs-lock-alt"></i>
-        </div>
-
-        <button type="submit" class="btn">دخول / تسجيل</button>
-      </form>
-    </div>
-  </div>
+    <?php if (!empty($message)): ?>
+        <p style="color:red;"><?= htmlspecialchars($message) ?></p>
+    <?php endif; ?>
 </body>
 </html>
