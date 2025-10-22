@@ -1,12 +1,31 @@
 <?php
-// جرب الاتصال بقاعدة البيانات باستخدام DATABASE_URL
 $databaseUrl = getenv("DATABASE_URL");
 
-$conn = pg_connect($databaseUrl);
-
-if (!$conn) {
-    die("فشل الاتصال بقاعدة البيانات: " . pg_last_error());
+if ($databaseUrl) {
+    $conn = new PDO(
+        $databaseUrl,
+        null,
+        null,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ]
+    );
 } else {
-    echo "تم الاتصال بقاعدة البيانات بنجاح ✅";
+    $host = getenv("PGHOST");
+    $port = getenv("PGPORT");
+    $dbname = getenv("PGDATABASE");
+    $user = getenv("PGUSER");
+    $password = getenv("PGPASSWORD");
+
+    $conn = new PDO(
+        "pgsql:host=$host;port=$port;dbname=$dbname",
+        $user,
+        $password,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ]
+    );
 }
 ?>
