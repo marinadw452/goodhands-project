@@ -1,0 +1,73 @@
+/* =============== About Me Section =============== */
+.aboutMe {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #f5e1c3 0%, #f7f0e3 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: 40px;
+    align-items: center;
+}
+
+.aboutImage img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.aboutImage img:hover {
+    transform: scale(1.05);
+}
+
+.textContainer {
+    flex: 1;
+    min-width: 300px;
+}
+
+.aboutTitle {
+    font-size: 40px;
+    color: #ba7d37;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.aboutMePar {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.aboutBtn {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #ba7d37;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.aboutBtn:hover {
+    background-color: #e7d56d;
+    color: #000;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+    .aboutContainer {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .aboutImage img {
+        width: 80%;
+    }
+}
