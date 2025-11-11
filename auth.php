@@ -65,23 +65,23 @@ body {
   margin: 0; padding: 0;
   height: 100vh;
   display: flex; justify-content: center; align-items: center;
-  background: url('images/4.png') no-repeat center center fixed;
+  background: url('images/placeholder.png') no-repeat center center fixed; /* استبدلي بالصورة لاحقًا */
   background-size: cover;
   font-family: Arial, sans-serif;
 }
 
-/* خلفية ضبابية */
 .overlay {
   position: absolute;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.4);
   backdrop-filter: blur(5px);
   z-index: 0;
 }
 
 .container {
   position: relative;
-  width: 380px; height: 450px;
+  width: 320px;  /* أصغر من السابق */
+  height: 380px; /* أصغر وأكثر تناسق */
   perspective: 1000px;
   z-index: 1;
 }
@@ -101,52 +101,62 @@ body {
   position: absolute;
   width: 100%; height: 100%;
   background: rgba(255,255,255,0.15);
-  border-radius: 10px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  padding: 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  padding: 25px;
   backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form-box h2 {
   text-align: center;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 22px;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
   border: none;
   outline: none;
   background: rgba(255,255,255,0.8);
+  font-size: 15px;
 }
 
 button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: none;
   background: #f5e1c3;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .switch {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
   color: #fff;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .signup-box {
   transform: rotateY(180deg);
 }
+
 .message {
   color: yellow;
   text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 </style>
 
@@ -158,7 +168,7 @@ button {
 <div class="container">
   <div class="card" id="flip-card">
 
-    <!-- ✅ Login Form -->
+    <!-- Login Form -->
     <div class="form-box login-box">
       <h2>تسجيل الدخول</h2>
 
@@ -172,10 +182,10 @@ button {
         <button type="submit" name="login">دخول</button>
       </form>
 
-      <p class="switch" onclick="flipCard()">ليس لديك حساب؟ إنشئ واحدًا</p>
+      <p class="switch" onclick="flipCard()">ليس لديك حساب؟ إنشاء حساب</p>
     </div>
 
-    <!-- ✅ Signup Form -->
+    <!-- Signup Form -->
     <div class="form-box signup-box">
       <h2>إنشاء حساب</h2>
 
