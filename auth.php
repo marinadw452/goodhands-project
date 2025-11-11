@@ -65,7 +65,7 @@ body {
   margin: 0; padding: 0;
   height: 100vh;
   display: flex; justify-content: center; align-items: center;
-  background: url('images/placeholder.png') no-repeat center center fixed; /* استبدلي بالصورة لاحقًا */
+  background: url('images/handmaed.png') no-repeat center center fixed; /* استبدلي بالصورة لاحقًا */
   background-size: cover;
   font-family: Arial, sans-serif;
 }
