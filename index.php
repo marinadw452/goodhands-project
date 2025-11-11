@@ -6,20 +6,21 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Good Hands</title>
+  <title>حولنا - Good Hands</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   
+<!-- Navbar مشابه للصفحة الرئيسية -->
 <nav class="navbar">
   <img src="images/LOGO.png" class="logo" alt="Logo">
   <ul class="nav-links">
-    <li><a href="#" class="fade-link">الرئيسية</a></li>
-    <li><a href="#" class="fade-link">نساء</a></li>
-    <li><a href="#" class="fade-link">رجالي</a></li>
-    <li><a href="#" class="fade-link">أثاث</a></li>
-    <li><a href="#" class="fade-link">حول</a></li>
-    <li><a href="#" class="fade-link">الاتصال</a></li>
+    <li><a href="index.php" class="fade-link">الرئيسية</a></li>
+    <li><a href="index.php#نساء" class="fade-link">نساء</a></li>
+    <li><a href="index.php#رجالي" class="fade-link">رجالي</a></li>
+    <li><a href="index.php#أثاث" class="fade-link">أثاث</a></li>
+    <li><a href="about.php" class="fade-link">حول</a></li>
+    <li><a href="index.php#الاتصال" class="fade-link">الاتصال</a></li>
   </ul>
   <div class="cart-icon">🛒</div>
 
@@ -36,24 +37,22 @@ session_start();
   </div>
 </nav>
 
-<section class="hero">
-  <div class="slider">
-    <img src="images/4.png" class="slide active" alt="صورة 1">
-    <img src="images/123.png" class="slide" alt="صورة 2">
-    <img src="images/11.png" class="slide" alt="صورة 3">
-    <img src="images/14.png" class="slide" alt="صورة 4">
-  </div>
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>أيدي طيّبه</h1>
-    <h1>Good Hands</h1>
-    <p>"كل قطعة تعكس إبداع صانعها."</p>
-    <button class="btn">تصفح</button>
-  </div>
+<!-- قسم حولنا -->
+<section class="aboutMe" id="aboutMe">
+    <div class="aboutContainer">
+        <div class="aboutImage">
+            <img src="images/about.jpg" alt="صورة عن مجموعة Good Hands">
+        </div>
+        <div class="textContainer">
+            <h2 class="aboutTitle">من نحن</h2>
+            <p class="aboutMePar">
+                نحن مجموعة من طلاب طيّبة، مطورين ويب مبدعين، نسعى لدعم الأسر المنتجة والأيادي الذهبية في المملكة.  
+                هدفنا هو توفير منصة سهلة وآمنة للوصول إلى منتجاتهم بأسرع وقت وبأعلى جودة.
+            </p>
+            <a href="index.php" class="btn aboutBtn">العودة للرئيسية</a>
+        </div>
+    </div>
 </section>
 
-<script src="script.js"></script>
-<script src="golden-air.js"></script>
 </body>
 </html>
-
