@@ -31,7 +31,7 @@ session_start();
         <li><a href="logout.php">تسجيل الخروج</a></li>
       </ul>
     <?php else: ?>
-      <a href="login.php"><button id="login-btn">تسجيل الدخول</button></a>
+      <a href="auth.php"><button id="authlog">تسجيل الدخول</button></a>
     <?php endif; ?>
   </div>
 </nav>
@@ -56,3 +56,4 @@ session_start();
 <script src="golden-air.js"></script>
 </body>
 </html>
+
