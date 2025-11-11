@@ -22,3 +22,4 @@ if (!$result) {
     die("فشل إنشاء الجدول: " . pg_last_error());
 }
 ?>
+    
