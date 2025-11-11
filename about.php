@@ -16,7 +16,7 @@ session_start();
 <section class="aboutMe" id="aboutMe">
     <div class="aboutContainer">
         <div class="aboutImage">
-            <img src="images/about.jpg" alt="صورة عن مجموعة Good Hands">
+            <img src="images/LOGO.png" alt="صورة عن مجموعة Good Hands">
         </div>
         <div class="textContainer">
             <h2 class="aboutTitle">من نحن</h2>
