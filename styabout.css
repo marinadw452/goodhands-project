@@ -1,4 +1,3 @@
-
 .aboutMeHero {
     position: relative;
     padding: 100px 20px;
@@ -54,7 +53,7 @@
 .aboutBtn {
     padding: 12px 25px;
     font-size: 16px;
-    background-color: #9e9e9e; /* ذهبية متناسقة */
+    background-color: #ba7d37; /* ذهبية متناسقة */
     color: #fff;
     border-radius: 8px;
     text-decoration: none;
@@ -62,7 +61,7 @@
 }
 
 .aboutBtn:hover {
-    background-color: #9e9e9e;
+    background-color: #f7e57e;
     color: #000;
 }
 
