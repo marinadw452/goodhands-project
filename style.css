@@ -1,258 +1,42 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body, html {
-  height: 100%;
-  font-family: 'Arial', sans-serif;
-}
-
-/* ====== Header Style مطابق للصورة ====== */
+/* شريط التنقل */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 90px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4); /* خلفية شفافة */
   backdrop-filter: blur(6px);
-  z-index: 20;
+  z-index: 10;
 }
 
 /* اللوقو */
 .navbar .logo {
-  height: 75px;
+  height: 80px;
 }
 
-/* أيقونات يسار */
-.nav-right-icons {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 26px;
-  color: #e7d56d;
-}
-
-.icon {
-  cursor: pointer;
-  transition: 0.3s;
-}
-.icon:hover {
-  transform: scale(1.15);
-}
-
-/* شارة رقم السلة */
-.icon-container {
-  position: relative;
-  cursor: pointer;
-}
-.icon-container .badge {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: red;
-  color: #fff;
-  font-size: 11px;
-  padding: 2px 5px;
-  border-radius: 50%;
-}
-
-/* استايل البحث بالشكل المطلوب تمامًا */
-.search-box {
-  position: relative;           /* لتموضع الأيقونة داخل الصندوق */
-  width: 45%;
-  height: 48px;
-  display: block;               /* نتجنب flex هنا */
-  background: rgba(255,255,255,0.3);
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  padding: 0;                   /* نخلي الحواف من الـ input نفسه */
-  overflow: hidden;
-}
-
-/* الحقل: النص يمين، مساحة للأيقونة يسار */
-.search-box input {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 17px;
-  text-align: right;            /* يبدأ من اليمين */
-  padding-right: 18px;          /* مسافة يمين للنص */
-  padding-left: 44px;           /* نخلي مساحة للأيقونة يسار */
-}
-
-/* الأيقونة مثبتة يسار داخل الصندوق */
-.search-box .search-icon {
-  position: absolute;
-  left: 14px;                   /* يسار تمامًا مثل الصورة */
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: #fff;
-  pointer-events: none;         /* ما تعيق الكتابة في الحقل */
-}
-
-/* نلغي أي قواعد قديمة متعارضة (لو موجودة) */
-.navbar .search-icon { all: unset; }
-.navbar .search-icon { 
-  position: absolute; 
-  left: 14px; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  font-size: 20px; 
-  color: #fff; 
-  pointer-events: none; 
-}
-
-
-
-
-#login-btn {
-  background-color: #f5e1c356;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
-}
-#login-btn:hover {
-  background-color:#f5e1c356;
-}
-
-.user-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #00b3ff;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
-  position: relative;
-}
-
-.user-menu {
-  display: none;
-  position: absolute;
-  top: 55px;
-  right: 0;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  width: 180px;
-  text-align: right;
-  overflow: hidden;
-  z-index: 100;
-}
-.user-menu.active {
-  display: block;
-}
-.user-menu li {
+/* روابط التنقل */
+.nav-links {
   list-style: none;
-  padding: 10px;
-  cursor: pointer;
-}
-.user-menu li:hover {
-  background: #f3f3f3;
-}
-
-/* ================= Hero Section ================= */
-.hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-.slider .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-.slider .slide.active {
-  opacity: 1;
-}
-.overlay {
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 1;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 25px;
   align-items: center;
-  height: 100%;
-  text-align: center;
+}
+
+/* الروابط داخل القائمة */
+.nav-links li a {
+  text-decoration: none;
   color: #fff;
-}
-.hero-content h1 {
-  font-size: 60px;
   font-weight: bold;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-}
-.hero-content p {
-  font-size: 24px;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-}
-.hero-content .btn {
-  padding: 15px 30px;
   font-size: 18px;
-  background-color: #F5E1C3;
-  color: #000;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.hero-content .btn:hover {
-  background-color: #E0CFA0;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-/* ================= Responsive ================= */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 40px; }
-  .hero-content p { font-size: 18px; }
-  .navbar { padding: 15px 20px; }
+/* تأثير الهوفر */
+.nav-links li a:hover {
+  color: #f7e57e;
 }
-@media (max-width: 480px) {
-  .hero-content h1 { font-size: 28px; }
-  .hero-content p { font-size: 14px; }
-}
-
-
-
-
-
-
