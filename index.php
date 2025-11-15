@@ -15,11 +15,11 @@ session_start();
   <!-- اللوقو يمين -->
   <img src="images/LOGO.png" class="logo" alt="Logo">
 
-  <!-- مربع البحث في المنتصف -->
   <div class="search-box">
-    <span class="search-icon">🔍</span>
-    <input type="text" placeholder="ما الذي تبحث عنه؟">
-  </div>
+  <input type="text" placeholder="ما الذي تبحث عنه؟">
+  <span class="search-icon">🔍</span>
+</div>
+
 
   <!-- أيقونات يسار -->
   <div class="nav-right-icons">
@@ -65,6 +65,7 @@ session_start();
 <script src="golden-air.js"></script>
 </body>
 </html>
+
 
 
 
