@@ -61,33 +61,38 @@ body, html {
   border-radius: 50%;
 }
 
-/* مربع البحث */
 .search-box {
   width: 45%;
   height: 48px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 30px;
   padding: 0 18px;
   border: 1px solid #ddd;
 }
-.search-box .search-icon {
-  font-size: 20px;
-  margin-left: 10px;
-  color: #fff;
-}
+
 .search-box input {
   width: 100%;
-  outline: none;
   background: transparent;
   border: none;
+  outline: none;
   color: #fff;
   font-size: 17px;
+  text-align: right;
 }
+
 .search-box input::placeholder {
   color: #ddd;
 }
+
+.search-icon {
+  font-size: 20px;
+  color: #fff;
+  margin-left: 10px;
+}
+
 
 #login-btn {
   background-color: #f5e1c356;
@@ -225,3 +230,4 @@ body, html {
   .hero-content h1 { font-size: 28px; }
   .hero-content p { font-size: 14px; }
 }
+
