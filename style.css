@@ -62,21 +62,33 @@ body, html {
 }
 
 /* استايل البحث بالشكل المطلوب تمامًا */
-.search{
-      flex:1;display:flex;gap:8px;align-items:center;
-    }
-    .search input{
-      width:100%;border:1px solid var(--ring);border-radius:10px;padding:10px 12px;background:#fff;
-    }
-    .search button{
-      border:none;border-radius:10px;background:var(--accent);color:#fff;padding:10px 14px;cursor:pointer;font-weight:700;
-    }
-    .actions{
-      display:flex;gap:10px;align-items:center;
-    }
-    .action{
-      display:flex;align-items:center;gap:8px;background:#0b1b2b;color:#fff;padding:8px 12px;border-radius:10px;font-size:14px;cursor:pointer
-    }
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 8px 16px;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.search-box input[type="text"] {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  padding: 4px;
+  direction: rtl;
+}
+
+.search-box .search-icon {
+  font-size: 18px;
+  margin-left: 8px;
+  color: #888;
+}
+
 
 
 #login-btn {
@@ -215,6 +227,7 @@ body, html {
   .hero-content h1 { font-size: 28px; }
   .hero-content p { font-size: 14px; }
 }
+
 
 
 
