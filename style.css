@@ -8,8 +8,7 @@ body, html {
   font-family: 'Arial', sans-serif;
 }
 
-/* ====== New Header Style (مطابق للصورة) ====== */
-
+/* ====== Header Style مطابق للصورة ====== */
 .navbar {
   position: fixed;
   top: 0;
@@ -29,7 +28,7 @@ body, html {
   height: 75px;
 }
 
-/* أيقونات يمين */
+/* أيقونات يسار */
 .nav-right-icons {
   display: flex;
   align-items: center;
@@ -38,22 +37,10 @@ body, html {
   color: #e7d56d;
 }
 
-/* ✨ تأثير التلاشي */
-.fade-link.clicked {
-  animation: textFade 0.8s forwards;
-}
-
-@keyframes textFade {
-  0% { opacity: 1; filter: blur(0); }
-  50% { opacity: 0.5; filter: blur(2px); transform: translateX(10px); }
-  100% { opacity: 0; filter: blur(5px); transform: translateX(30px); }
-}
-
 .icon {
   cursor: pointer;
   transition: 0.3s;
 }
-
 .icon:hover {
   transform: scale(1.15);
 }
@@ -63,7 +50,6 @@ body, html {
   position: relative;
   cursor: pointer;
 }
-
 .icon-container .badge {
   position: absolute;
   top: -8px;
@@ -86,13 +72,11 @@ body, html {
   padding: 0 18px;
   border: 1px solid #ddd;
 }
-
 .search-box .search-icon {
   font-size: 20px;
   margin-left: 10px;
   color: #fff;
 }
-
 .search-box input {
   width: 100%;
   outline: none;
@@ -101,11 +85,9 @@ body, html {
   color: #fff;
   font-size: 17px;
 }
-
 .search-box input::placeholder {
   color: #ddd;
 }
-🎉 النتيجة النهائية
 
 #login-btn {
   background-color: #f5e1c356;
@@ -121,7 +103,6 @@ body, html {
   background-color:#f5e1c356;
 }
 
-/* أيقونة المستخدم */
 .user-icon {
   width: 42px;
   height: 42px;
@@ -136,7 +117,6 @@ body, html {
   position: relative;
 }
 
-/* القائمة المنسدلة */
 .user-menu {
   display: none;
   position: absolute;
@@ -169,7 +149,6 @@ body, html {
   width: 100%;
   overflow: hidden;
 }
-
 .slider {
   position: absolute;
   top: 0;
@@ -178,7 +157,6 @@ body, html {
   height: 100%;
   z-index: 0;
 }
-
 .slider .slide {
   position: absolute;
   top: 0;
@@ -189,11 +167,9 @@ body, html {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-
 .slider .slide.active {
   opacity: 1;
 }
-
 .overlay {
   position: absolute;
   top:0;
@@ -203,7 +179,6 @@ body, html {
   background: rgba(0,0,0,0.4);
   z-index: 1;
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
@@ -215,20 +190,17 @@ body, html {
   text-align: center;
   color: #fff;
 }
-
 .hero-content h1 {
   font-size: 60px;
   font-weight: bold;
   margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
 }
-
 .hero-content p {
   font-size: 24px;
   margin-bottom: 30px;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
 }
-
 .hero-content .btn {
   padding: 15px 30px;
   font-size: 18px;
@@ -253,4 +225,3 @@ body, html {
   .hero-content h1 { font-size: 28px; }
   .hero-content p { font-size: 14px; }
 }
-
