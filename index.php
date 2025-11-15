@@ -12,16 +12,29 @@ session_start();
 <body>
   
 <nav class="navbar">
+  
+  <!-- أيقونات يمين -->
+  <div class="nav-right-icons">
+    <span class="icon-container">
+      🛒
+      <span class="badge">0</span>
+    </span>
+
+    <span class="icon">🤍</span>
+    <span class="icon">🔍</span>
+    <span class="icon">👤</span>
+  </div>
+
+  <!-- مربع البحث -->
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="ما الذي تبحث عنه؟">
+  </div>
+
+  <!-- اللوقو يسار (نفس لوقوك) -->
   <img src="images/LOGO.png" class="logo" alt="Logo">
-  <ul class="nav-links">
-    <li><a href="#" class="fade-link">الرئيسية</a></li>
-    <li><a href="#" class="fade-link">نساء</a></li>
-    <li><a href="#" class="fade-link">رجالي</a></li>
-    <li><a href="#" class="fade-link">أثاث</a></li>
-    <li><a href="about.php" class="fade-link">حول</a></li>
-    <li><a href="#" class="fade-link">الاتصال</a></li>
-  </ul>
-  <div class="cart-icon">🛒</div>
+</nav>
+
 
   <div id="auth-section">
     <?php if(isset($_SESSION['username'])): ?>
@@ -56,3 +69,4 @@ session_start();
 <script src="golden-air.js"></script>
 </body>
 </html>  
+
