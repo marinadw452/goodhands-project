@@ -10,44 +10,40 @@ session_start();
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+
 <nav class="navbar">
-  
-  <!-- أيقونات يمين -->
-  <div class="nav-right-icons">
-    <span class="icon-container">
-      🛒
-      <span class="badge">0</span>
-    </span>
+  <!-- اللوقو يمين -->
+  <img src="images/LOGO.png" class="logo" alt="Logo">
 
-    <span class="icon">🤍</span>
-    <span class="icon">🔍</span>
-    <span class="icon">👤</span>
-  </div>
-
-  <!-- مربع البحث -->
+  <!-- مربع البحث في المنتصف -->
   <div class="search-box">
     <span class="search-icon">🔍</span>
     <input type="text" placeholder="ما الذي تبحث عنه؟">
   </div>
 
-  <!-- اللوقو يسار (نفس لوقوك) -->
-  <img src="images/LOGO.png" class="logo" alt="Logo">
-</nav>
-
-
-  <div id="auth-section">
-    <?php if(isset($_SESSION['username'])): ?>
-      <div class="user-icon"><?php echo strtoupper($_SESSION['username'][0]); ?></div>
-      <ul class="user-menu">
-        <li><?php echo $_SESSION['username']; ?></li>
-        <li><a href="logout.php">تسجيل الخروج</a></li>
-      </ul>
-    <?php else: ?>
-      <a href="auth.php"><button id="authlog">تسجيل الدخول</button></a>
-    <?php endif; ?>
+  <!-- أيقونات يسار -->
+  <div class="nav-right-icons">
+    <span class="icon-container">
+      <span class="icon">🛒</span>
+      <span class="badge">0</span>
+    </span>
+    <span class="icon">🤍</span>
+    <span class="icon">🔍</span>
+    <span class="icon">👤</span>
   </div>
 </nav>
+
+<div id="auth-section">
+  <?php if(isset($_SESSION['username'])): ?>
+    <div class="user-icon"><?php echo strtoupper($_SESSION['username'][0]); ?></div>
+    <ul class="user-menu">
+      <li><?php echo $_SESSION['username']; ?></li>
+      <li><a href="logout.php">تسجيل الخروج</a></li>
+    </ul>
+  <?php else: ?>
+    <a href="auth.php"><button id="authlog">تسجيل الدخول</button></a>
+  <?php endif; ?>
+</div>
 
 <section class="hero">
   <div class="slider">
@@ -68,5 +64,8 @@ session_start();
 <script src="script.js"></script>
 <script src="golden-air.js"></script>
 </body>
-</html>  
+</html>
+
+
+
 
