@@ -7,3 +7,11 @@ setInterval(() => {
   current = (current + 1) % slides.length;
   slides[current].classList.add('active');
 }, intervalTime);
+
+function openLoginPanel() {
+  document.getElementById("loginPanel").style.right = "0";
+}
+
+function closeLoginPanel() {
+  document.getElementById("loginPanel").style.right = "-350px";
+}
