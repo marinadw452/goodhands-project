@@ -9,6 +9,143 @@ session_start();
   <title>Good Hands</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  <!-- ===== زر فتح نافذة تسجيل الدخول ===== -->
+<button onclick="openLoginPanel()" class="open-login-btn">تسجيل الدخول</button>
+
+<!-- ===== النافذة الجانبية ===== -->
+<div id="loginPanel" class="login-sidebar">
+    <div class="login-content">
+        <span class="close-btn" onclick="closeLoginPanel()">&times;</span>
+
+        <h3>تسجيل الدخول</h3>
+
+        <form method="POST" action="login.php">
+            <input type="text" name="username" placeholder="اسم المستخدم أو الإيميل" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+
+            <button type="submit" name="login">دخول</button>
+        </form>
+
+        <p>ما عندك حساب؟  
+            <a href="signup.php">سجل الآن</a>
+        </p>
+    </div>
+</div>
+
+<style>
+/* ===== نافذة تسجيل الدخول الجانبية ===== */
+.login-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px; /* مخفية افتراضياً */
+  width: 320px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* خلفية شفافة مشابهة للNavbar */
+  backdrop-filter: blur(10px); /* ضبابية */
+  box-shadow: -3px 0 12px rgba(0,0,0,0.4);
+  transition: 0.4s;
+  z-index: 9999;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+/* المحتوى الداخلي */
+.login-sidebar h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f7e57e; /* نفس تأثير الهوفر للروابط */
+  text-align: center;
+}
+
+/* الحقول */
+.login-sidebar input,
+.login-sidebar select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.login-sidebar input::placeholder,
+.login-sidebar select {
+  color: #ddd;
+}
+
+/* تأثير التركيز على الحقول */
+.login-sidebar input:focus {
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 0 8px rgba(247,229,126,0.6);
+}
+
+/* زر الدخول */
+.login-sidebar button {
+  width: 100%;
+  padding: 12px;
+  background: #f7e57e;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-sidebar button:hover {
+  background: #ffd700;
+}
+
+/* رابط التسجيل */
+.login-sidebar p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-sidebar p a {
+  color: #f7e57e;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.login-sidebar p a:hover {
+  color: #ffd700;
+}
+
+/* زر اغلاق النافذة */
+.login-sidebar .close-btn {
+  font-size: 28px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-bottom: 15px;
+  transition: color 0.3s;
+}
+
+.login-sidebar .close-btn:hover {
+  color: #f7e57e;
+}
+</style>
+
+<script>
+function openLoginPanel() {
+    document.getElementById("loginPanel").style.right = "0";
+}
+function closeLoginPanel() {
+    document.getElementById("loginPanel").style.right = "-350px";
+}
+</script>
+
 <body>
 
   <nav class="navbar">
@@ -65,3 +202,4 @@ session_start();
 
 </body>
 </html>
+
