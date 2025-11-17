@@ -12,21 +12,13 @@
   backdrop-filter: blur(6px);
   z-index: 10;
 }
-
-/* اللوقو */
-.navbar .logo {
-  height: 80px;
-}
-
-/* روابط التنقل */
+.navbar .logo { height: 80px; }
 .nav-links {
   list-style: none;
   display: flex;
   gap: 25px;
   align-items: center;
 }
-
-/* الروابط داخل القائمة */
 .nav-links li a {
   text-decoration: none;
   color: #fff;
@@ -35,13 +27,7 @@
   position: relative;
   transition: color 0.3s ease;
 }
-
-/* تأثير الهوفر */
-.nav-links li a:hover {
-  color: #f7e57e;
-}
-
-/* زر التصفح وزر تسجيل الدخول */
+.nav-links li a:hover { color: #f7e57e; }
 .btn {
   background: linear-gradient(90deg, #f7e57e 0%, #eec857 100%);
   color: #222;
@@ -54,15 +40,47 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background 0.3s, color 0.3s;
 }
-
 .btn:hover {
   background: linear-gradient(90deg, #ffe066 0%, #ffd23f 100%);
   color: #000;
 }
-
+/* سلايدر الخلفية */
+.slider {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+.slide {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+  top: 0; left: 0;
+}
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+.overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+  margin-top: 120px;
+}
 /* القائمة الجانبية لتسجيل الدخول */
 #sidebar-login {
-  /* التنسيق مدمج بالـ HTML، يمكن نقله هنا إذا رغبت */
   display: none;
   flex-direction: column;
   align-items: center;
@@ -78,8 +96,6 @@
   z-index: 100;
   box-shadow: 0 0 30px #000;
 }
-
-/* زر إغلاق القائمة الجانبية */
 #close-sidebar {
   position: absolute;
   top: 20px;
@@ -90,8 +106,6 @@
   color: #fff;
   cursor: pointer;
 }
-
-/* فورم تسجيل الدخول داخل القائمة الجانبية */
 #sidebar-login form {
   width: 80%;
   max-width: 300px;
@@ -101,14 +115,12 @@
   align-items: center;
   justify-content: center;
 }
-
 #sidebar-login h2 {
   color: #f7e57e;
   margin-bottom: 10px;
 }
-
-#sidebar-login input[type=\"text\"],
-#sidebar-login input[type=\"password\"] {
+#sidebar-login input[type="text"],
+#sidebar-login input[type="password"] {
   width: 100%;
   padding: 12px 10px;
   border-radius: 8px;
@@ -120,9 +132,12 @@
   text-align: center;
   outline: none;
 }
-
-#sidebar-login input[type=\"text\"]::placeholder,
-#sidebar-login input[type=\"password\"]::placeholder {
+#sidebar-login input[type="text"]::placeholder,
+#sidebar-login input[type="password"]::placeholder {
   color: #eee;
   opacity: 1;
+}
+@media (max-width: 600px) {
+  .navbar { padding: 0 10px; }
+  #sidebar-login { width: 95vw; }
 }
