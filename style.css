@@ -1,4 +1,4 @@
-/* شريط التنقل */
+/* =================== Navbar =================== */
 .navbar {
   position: fixed;
   top: 0;
@@ -8,17 +8,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  background: rgba(0, 0, 0, 0.4); /* خلفية شفافة */
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
   z-index: 10;
 }
 
-/* اللوقو */
 .navbar .logo {
   height: 80px;
 }
 
-/* روابط التنقل */
 .nav-links {
   list-style: none;
   display: flex;
@@ -26,7 +24,6 @@
   align-items: center;
 }
 
-/* الروابط داخل القائمة */
 .nav-links li a {
   text-decoration: none;
   color: #fff;
@@ -36,7 +33,146 @@
   transition: color 0.3s ease;
 }
 
-/* تأثير الهوفر */
 .nav-links li a:hover {
   color: #f7e57e;
+}
+
+/* ================= Hero Slider ================= */
+.hero {
+  margin-top: 80px; /* لتجنب الـ navbar */
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slider img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+/* ================= Sidebar Login ================= */
+.login-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: -3px 0 12px rgba(0,0,0,0.4);
+  transition: 0.4s;
+  z-index: 9999;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.login-sidebar h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f7e57e;
+  text-align: center;
+}
+
+.login-sidebar input,
+.login-sidebar select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.login-sidebar input::placeholder,
+.login-sidebar select {
+  color: #ddd;
+}
+
+.login-sidebar input:focus {
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 0 8px rgba(247,229,126,0.6);
+}
+
+.login-sidebar button {
+  width: 100%;
+  padding: 12px;
+  background: #f7e57e;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-sidebar button:hover {
+  background: #ffd700;
+}
+
+.login-sidebar p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-sidebar p a {
+  color: #f7e57e;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.login-sidebar p a:hover {
+  color: #ffd700;
+}
+
+.login-sidebar .close-btn {
+  font-size: 28px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-bottom: 15px;
+  transition: color 0.3s;
+}
+
+.login-sidebar .close-btn:hover {
+  color: #f7e57e;
+}
+
+/* زر فتح النافذة */
+.open-login-btn {
+    position: fixed;
+    top: 25px;
+    right: 40px;
+    padding: 10px 20px;
+    background: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 15;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .navbar { padding: 0 20px; }
+  .open-login-btn { right: 20px; top: 20px; }
+  .hero { height: 400px; }
+  .slider img { height: 400px; }
 }
