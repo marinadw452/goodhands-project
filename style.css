@@ -1,24 +1,41 @@
+/* شريط التنقل */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   padding: 0 40px;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
   z-index: 10;
+  justify-content: space-between;
+  direction: rtl;
 }
-.navbar .logo { height: 80px; margin-right: 20px; }
+
+/* اللوقو أقصى اليمين */
+.logo {
+  height: 80px;
+  margin-right: 0;
+  margin-left: 30px;
+  order: 0;
+}
+
+/* الروابط في المنتصف */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 25px;
   align-items: center;
-  margin-left: 20px;
+  flex: 1;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  order: 1;
 }
+
+/* الروابط داخل القائمة */
 .nav-links li a {
   text-decoration: none;
   color: #fff;
@@ -27,7 +44,19 @@
   position: relative;
   transition: color 0.3s ease;
 }
-.nav-links li a:hover { color: #f7e57e; }
+
+.nav-links li a:hover {
+  color: #f7e57e;
+}
+
+/* زر تسجيل الدخول أقصى اليسار */
+#side-login-btn {
+  margin-left: 0;
+  margin-right: 0;
+  order: 2;
+}
+
+/* زر التصفح وزر تسجيل الدخول */
 .btn {
   background: linear-gradient(90deg, #f7e57e 0%, #eec857 100%);
   color: #222;
@@ -40,15 +69,13 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background 0.3s, color 0.3s;
 }
+
 .btn:hover {
   background: linear-gradient(90deg, #ffe066 0%, #ffd23f 100%);
   color: #000;
 }
-#side-login-btn {
-  margin-left: auto;
-  margin-right: 0;
-  order: -1;
-}
+
+/* سلايدر الخلفية */
 .slider {
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -108,6 +135,8 @@
 .hero-content .btn {
   box-shadow: 0 2px 16px rgba(0,0,0,0.25);
 }
+
+/* القائمة الجانبية لتسجيل الدخول */
 #sidebar-login {
   display: none;
   flex-direction: column;
