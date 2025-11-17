@@ -1,4 +1,4 @@
-/* =================== Navbar =================== */
+/* شريط التنقل */
 .navbar {
   position: fixed;
   top: 0;
@@ -13,10 +13,12 @@
   z-index: 10;
 }
 
+/* اللوقو */
 .navbar .logo {
   height: 80px;
 }
 
+/* روابط التنقل */
 .nav-links {
   list-style: none;
   display: flex;
@@ -24,6 +26,7 @@
   align-items: center;
 }
 
+/* الروابط داخل القائمة */
 .nav-links li a {
   text-decoration: none;
   color: #fff;
@@ -33,146 +36,93 @@
   transition: color 0.3s ease;
 }
 
+/* تأثير الهوفر */
 .nav-links li a:hover {
   color: #f7e57e;
 }
 
-/* ================= Hero Slider ================= */
-.hero {
-  margin-top: 80px; /* لتجنب الـ navbar */
-  position: relative;
-  height: 500px;
-  overflow: hidden;
+/* زر التصفح وزر تسجيل الدخول */
+.btn {
+  background: linear-gradient(90deg, #f7e57e 0%, #eec857 100%);
+  color: #222;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s, color 0.3s;
 }
 
-.slider img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1s ease;
+.btn:hover {
+  background: linear-gradient(90deg, #ffe066 0%, #ffd23f 100%);
+  color: #000;
 }
 
-.slider img.active {
-  opacity: 1;
-}
-
-/* ================= Sidebar Login ================= */
-.login-sidebar {
-  position: fixed;
-  top: 0;
-  right: -350px;
-  width: 320px;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  box-shadow: -3px 0 12px rgba(0,0,0,0.4);
-  transition: 0.4s;
-  z-index: 9999;
-  padding: 30px 20px;
-  display: flex;
+/* القائمة الجانبية لتسجيل الدخول */
+#sidebar-login {
+  /* التنسيق مدمج بالـ HTML، يمكن نقله هنا إذا رغبت */
+  display: none;
   flex-direction: column;
   align-items: center;
-  color: #fff;
-  font-family: 'Arial', sans-serif;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  max-width: 90vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  box-shadow: 0 0 30px #000;
 }
 
-.login-sidebar h3 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #f7e57e;
-  text-align: center;
-}
-
-.login-sidebar input,
-.login-sidebar select {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
+/* زر إغلاق القائمة الجانبية */
+#close-sidebar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
   border: none;
-  outline: none;
-  font-size: 15px;
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-  transition: 0.3s;
-}
-
-.login-sidebar input::placeholder,
-.login-sidebar select {
-  color: #ddd;
-}
-
-.login-sidebar input:focus {
-  background: rgba(255,255,255,0.3);
-  box-shadow: 0 0 8px rgba(247,229,126,0.6);
-}
-
-.login-sidebar button {
-  width: 100%;
-  padding: 12px;
-  background: #f7e57e;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-sidebar button:hover {
-  background: #ffd700;
-}
-
-.login-sidebar p {
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-.login-sidebar p a {
-  color: #f7e57e;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.login-sidebar p a:hover {
-  color: #ffd700;
-}
-
-.login-sidebar .close-btn {
   font-size: 28px;
+  color: #fff;
   cursor: pointer;
-  align-self: flex-start;
-  margin-bottom: 15px;
-  transition: color 0.3s;
 }
 
-.login-sidebar .close-btn:hover {
+/* فورم تسجيل الدخول داخل القائمة الجانبية */
+#sidebar-login form {
+  width: 80%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+#sidebar-login h2 {
   color: #f7e57e;
+  margin-bottom: 10px;
 }
 
-/* زر فتح النافذة */
-.open-login-btn {
-    position: fixed;
-    top: 25px;
-    right: 40px;
-    padding: 10px 20px;
-    background: #1e88e5;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    z-index: 15;
+#sidebar-login input[type=\"text\"],
+#sidebar-login input[type=\"password\"] {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 17px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+  outline: none;
 }
 
-/* Responsive */
-@media (max-width: 768px){
-  .navbar { padding: 0 20px; }
-  .open-login-btn { right: 20px; top: 20px; }
-  .hero { height: 400px; }
-  .slider img { height: 400px; }
+#sidebar-login input[type=\"text\"]::placeholder,
+#sidebar-login input[type=\"password\"]::placeholder {
+  color: #eee;
+  opacity: 1;
 }
