@@ -13,23 +13,19 @@ session_start();
 <button onclick="openLoginPanel()" class="open-login-btn">تسجيل الدخول</button>
 
 <!-- ===== النافذة الجانبية ===== -->
+<!-- النافذة الجانبية لتسجيل الدخول -->
 <div id="loginPanel" class="login-sidebar">
-    <div class="login-content">
-        <span class="close-btn" onclick="closeLoginPanel()">&times;</span>
+    <span class="close-btn" onclick="closeLoginPanel()">&times;</span>
 
-        <h3>تسجيل الدخول</h3>
+    <h3>تسجيل الدخول</h3>
 
-        <form method="POST" action="login.php">
-            <input type="text" name="username" placeholder="اسم المستخدم أو الإيميل" required>
-            <input type="password" name="password" placeholder="كلمة المرور" required>
+    <form method="POST" action="login.php">
+        <input type="text" name="username" placeholder="اسم المستخدم أو الإيميل" required>
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <button type="submit" name="login">دخول</button>
+    </form>
 
-            <button type="submit" name="login">دخول</button>
-        </form>
-
-        <p>ما عندك حساب؟  
-            <a href="signup.php">سجل الآن</a>
-        </p>
-    </div>
+    <p>ما عندك حساب؟ <a href="signup.php">سجل الآن</a></p>
 </div>
 
 <style>
@@ -202,4 +198,5 @@ function closeLoginPanel() {
 
 </body>
 </html>
+
 
