@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -18,6 +16,7 @@ session_start();
   </div>
   <div class="overlay"></div>
   <nav class="navbar">
+    <button id="side-login-btn" class="btn">تسجيل الدخول</button>
     <img src="images/LOGO.png" class="logo" alt="Logo">
     <ul class="nav-links">
       <li><a href="#" class="fade-link">الرئيسية</a></li>
@@ -28,7 +27,6 @@ session_start();
       <li><a href="#" class="fade-link">الاتصال</a></li>
     </ul>
     <div class="cart-icon">🛒</div>
-    <button id="side-login-btn" class="btn" style="margin-left:auto; margin-right:20px;">تسجيل الدخول</button>
     <div id="auth-section" style="display:none;">
       <?php if(isset($_SESSION['username'])): ?>
         <div class="user-icon"><?php echo strtoupper($_SESSION['username'][0]); ?></div>
@@ -44,18 +42,17 @@ session_start();
   <!-- القائمة الجانبية لتسجيل الدخول -->
   <div id="sidebar-login">
     <button id="close-sidebar">&times;</button>
-    <form method="post" action="auth.php">
+    <form>
       <h2>تسجيل الدخول</h2>
-      <input type="text" name="username" placeholder="اسم المستخدم" required>
-      <input type="password" name="password" placeholder="كلمة المرور" required>
+      <input type="text" placeholder="اسم المستخدم">
+      <input type="password" placeholder="كلمة المرور">
       <button type="submit" class="btn" style="width:100%;margin-top:10px;">دخول</button>
     </form>
   </div>
   <section class="hero">
     <div class="hero-content">
       <h1>أيدي طيّبه</h1>
-      <h1>Good Hands</h1>
-      <p>"كل قطعة تعكس إبداع صانعها."</p>
+      <h3>كل قطعة تعكس إبداع صانعها.</h3>
       <button class="btn">تصفح</button>
     </div>
   </section>
