@@ -1,6 +1,7 @@
+// ===== Slider =====
 const slides = document.querySelectorAll('.slide');
 let current = 0;
-const intervalTime = 3000; // مدة عرض كل صورة بالمللي ثانية
+const intervalTime = 3000;
 
 setInterval(() => {
   slides[current].classList.remove('active');
@@ -8,6 +9,7 @@ setInterval(() => {
   slides[current].classList.add('active');
 }, intervalTime);
 
+// ===== Sidebar Login =====
 function openLoginPanel() {
   document.getElementById("loginPanel").style.right = "0";
 }
