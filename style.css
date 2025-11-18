@@ -1,211 +1,110 @@
-/* شريط التنقل */
+/* ================= Navbar (الأصلي) ================= */
+
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   height: 80px;
   display: flex;
-  align-items: center;
-  padding: 0 40px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
-  z-index: 10;
   justify-content: space-between;
-  direction: rtl;
+  align-items: center;
+  padding: 20px 40px;
+  background: #f5e1c356;
+  z-index: 10;
 }
 
-/* اللوقو أقصى اليمين */
-.logo {
+.navbar .logo {
   height: 80px;
-  margin-right: 0;
-  margin-left: 30px;
-  order: 0;
 }
 
-/* الروابط في المنتصف */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 25px;
   align-items: center;
-  flex: 1;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  order: 1;
 }
 
-/* الروابط داخل القائمة */
 .nav-links li a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
   font-weight: bold;
   font-size: 18px;
-  position: relative;
   transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #f7e57e;
+  color: #ba7d37;
 }
 
-/* زر تسجيل الدخول أقصى اليسار */
-#side-login-btn {
-  order: 2;
-  margin-left: 0;
-  margin-right: 0;
-  font-size: 15px;
-  padding: 8px 18px;
-  border-radius: 6px;
-  min-width: 90px;
-  height: 38px;
-  align-self: flex-start;
-  position: relative;
-  left: 0;
-  top: 0;
-  z-index: 11;
-}
-
-/* زر التصفح وزر تسجيل الدخول */
-.btn {
-  background: linear-gradient(90deg, #f7e57e 0%, #eec857 100%);
-  color: #222;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 32px;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.3s, color 0.3s;
-}
-
-.btn:hover {
-  background: linear-gradient(90deg, #ffe066 0%, #ffd23f 100%);
-  color: #000;
-}
-
-/* سلايدر الخلفية */
-.slider {
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 1;
-}
-.slide {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease;
-  top: 0; left: 0;
-}
-.slide.active {
-  opacity: 1;
-  z-index: 2;
-}
-.overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.3);
-  z-index: 2;
-}
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  text-align: center;
-  color: #fff;
-  width: 100vw;
-  max-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.hero-content h1 {
-  font-size: 3.2rem;
-  color: #fff;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.7), 0 1px 0 #222;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-.hero-content h3 {
-  font-size: 1.5rem;
-  color: #fff;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.7), 0 1px 0 #222;
-  margin-bottom: 24px;
-  font-weight: normal;
-}
-.hero-content .btn {
-  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
-}
-
-/* القائمة الجانبية لتسجيل الدخول */
-#sidebar-login {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 350px;
-  max-width: 90vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
-  z-index: 100;
-  box-shadow: 0 0 30px #000;
-}
-#close-sidebar {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
+/* أيقونة السلة */
+.cart-icon {
   font-size: 28px;
-  color: #fff;
+  color: #e7d56d;
   cursor: pointer;
-}
-#sidebar-login form {
-  width: 80%;
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: center;
-  justify-content: center;
-}
-#sidebar-login h2 {
-  color: #f7e57e;
-  margin-bottom: 10px;
-}
-#sidebar-login input[type="text"],
-#sidebar-login input[type="password"] {
-  width: 100%;
-  padding: 12px 10px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  font-size: 17px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  text-align: center;
-  outline: none;
-}
-#sidebar-login input[type="text"]::placeholder,
-#sidebar-login input[type="password"]::placeholder {
-  color: #eee;
-  opacity: 1;
-}
-@media (max-width: 600px) {
-  .navbar { padding: 0 10px; }
-  #sidebar-login { width: 95vw; }
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
+.cart-icon:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #FFD700;
+}
+
+/* زر تسجيل الدخول */
+#login-btn {
+  background-color: #f5e1c356;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+#login-btn:hover {
+  background-color:#f5e1c356;
+}
+
+/* أيقونة المستخدم */
+.user-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00b3ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+/* القائمة المنسدلة */
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  width: 180px;
+  text-align: right;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.user-menu.active {
+  display: block;
+}
+
+.user-menu li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user-menu li:hover {
+  background: #f3f3f3;
+}
