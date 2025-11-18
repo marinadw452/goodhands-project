@@ -8,12 +8,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="slider">
-    <img src="images/4.png" class="slide active" alt="صورة 1">
-    <img src="images/123.png" class="slide" alt="صورة 2">
-    <img src="images/11.png" class="slide" alt="صورة 3">
-    <img src="images/14.png" class="slide" alt="صورة 4">
-  </div>
+  <!-- القائمة الجانبية لتسجيل الدخول -->
+<div id="sidebar-login">
+  <button id="close-sidebar">&times;</button>
+  <form>
+    <h2>تسجيل الدخول</h2>
+    <input type="text" placeholder="اسم المستخدم">
+    <input type="password" placeholder="كلمة المرور">
+    <button type="submit" class="btn" style="width:100%;margin-top:10px;">دخول</button>
+  </form>
+  <a href="sign-up.php " class="signup-link" style="color:#f7e57e;margin-top:18px;display:block;text-align:center;font-weight:bold;">تسجيل جديد</a>
+</div>
   <div class="overlay"></div>
   <nav class="navbar">
     <button id="side-login-btn" class="btn">تسجيل الدخول</button>
@@ -59,3 +64,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
