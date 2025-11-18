@@ -51,9 +51,19 @@
 
 /* زر تسجيل الدخول أقصى اليسار */
 #side-login-btn {
+  order: 2;
   margin-left: 0;
   margin-right: 0;
-  order: 2;
+  font-size: 15px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  min-width: 90px;
+  height: 38px;
+  align-self: flex-start;
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 11;
 }
 
 /* زر التصفح وزر تسجيل الدخول */
@@ -198,3 +208,4 @@
   .navbar { padding: 0 10px; }
   #sidebar-login { width: 95vw; }
 }
+
