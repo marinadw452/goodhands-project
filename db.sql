@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS users CASCADE;
 
--- 3) إعادة إنشاء الجدول بالمخطط المطلوب
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
