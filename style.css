@@ -1,51 +1,114 @@
-/* نفس ستايلك الأصلي بالضبط + بني ذهبي فخم */
-:root {
-  --main-brown: #d4a574;
-  --dark-brown: #c48a4e;
-  --light-bg: #f5e1c3;
+* { margin:0; padding:0; box-sizing:border-box; }
+body { 
+  font-family: 'Tajawal', 'Geeza Pro', 'Segoe UI', sans-serif; 
+  background: #f9f5f0; 
+  color: #3e2723; 
+  direction: rtl; 
+  overflow-x: hidden;
 }
 
-body {margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#111;color:#fff;direction:rtl;overflow-x:hidden;}
-.navbar{position:fixed;top:0;width:100%;height:80px;display:flex;align-items:center;padding:0 30px;background:rgba(245,225,195,0.34);z-index:1000;justify-content:space-between;border-bottom:1px solid rgba(212,165,116,0.2);}
-.navbar .logo{height:64px;border-radius:8px;}
-.nav-links{list-style:none;display:flex;gap:28px;align-items:center;margin:0;padding:0;flex:1;justify-content:center;}
-.nav-links li a{text-decoration:none;color:#000;font-weight:bold;font-size:17px;transition:all .3s;padding:8px 16px;border-radius:6px;}
-.nav-links li a:hover{background:rgba(212,165,116,0.2);color:var(--main-brown);}
-
-#login-btn{background:rgba(245,225,195,0.34);color:#000;border:2px solid var(--main-brown);padding:10px 24px;border-radius:50px;cursor:pointer;font-weight:bold;font-size:15px;transition:all .3s;min-width:140px;}
-#login-btn:hover{background:var(--main-brown);color:#fff;transform:translateY(-2px);}
-
-.user-icon{width:44px;height:44px;border-radius:50%;background:var(--main-brown);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;cursor:pointer;box-shadow:0 4px 15px rgba(212,165,116,0.4);}
-.user-menu{display:none;position:absolute;top:75px;right:15px;background:#fff;color:#000;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.25);width:190px;overflow:hidden;z-index:1100;}
-.user-menu.active{display:block;}
-.user-menu li{padding:14px 20px;border-bottom:1px solid #eee;}
-.user-menu li:hover{background:var(--light-bg);}
-.user-menu a{color:#333;text-decoration:none;}
-
-.slider{position:fixed;top:0;right:0;left:0;bottom:0;width:100vw;height:100vh;overflow:hidden;z-index:1;}
-.slide{position:absolute;width:100vw;height:100vh;object-fit:cover;opacity:0;transition:opacity 1.5s ease;top:0;left:0;}
-.slide.active{opacity:1;z-index:2;}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.38);z-index:2;}
-.hero-content{position:relative;z-index:3;text-align:center;padding-top:25vh;max-width:90%;margin:0 auto;}
-.hero-content h1{font-size:4.2rem;margin:0 0 12px;color:var(--main-brown);text-shadow:0 4px 20px rgba(0,0,0,0.7);}
-.hero-content h3{font-size:1.6rem;margin:0 0 30px;color:var(--light-bg);text-shadow:0 3px 12px rgba(0,0,0,0.6);}
-.hero-content .btn{background:linear-gradient(90deg,var(--main-brown) 0%,var(--dark-brown) 100%);color:#fff;padding:16px 40px;border-radius:50px;border:none;font-weight:bold;font-size:1.3rem;cursor:pointer;box-shadow:0 8px 25px rgba(212,165,116,0.4);transition:all .3s;}
-.hero-content .btn:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(212,165,116,0.6);}
-.section-hero-wrap{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;}
-
-/* Sidebar */
-#sidebar-login{position:fixed;top:0;left:-490px;width:380px;max-width:90vw;height:100vh;background:rgba(17,17,17,0.97);backdrop-filter:blur(10px);box-shadow:4px 0 40px rgba(0,0,0,0.7);z-index:2000;transition:left .4s ease;padding:40px 30px;display:flex;flex-direction:column;align-items:center;}
-#sidebar-login.open{left:0;}
-#sidebar-login h2{color:var(--main-brown);margin:10px 0 25px;font-size:28px;}
-#sidebar-login input{width:100%;padding:16px;margin:10px 0;border-radius:12px;border:none;background:rgba(255,255,255,0.1);color:#fff;text-align:center;font-size:16px;}
-#sidebar-login .submit{background:linear-gradient(90deg,var(--main-brown) 0%,var(--dark-brown) 100%);color:#fff;padding:16px;border-radius:12px;border:none;font-weight:bold;font-size:18px;cursor:pointer;width:100%;margin-top:10px;}
-#sidebar-login .signup-link{color:var(--main-brown);margin-top:20px;font-weight:bold;text-decoration:none;}
-#sidebar-login .close-btn{position:absolute;top:15px;right:15px;background:none;border:none;font-size:32px;color:#fff;cursor:pointer;}
-
-/* متجاوب */
-@media (max-width:768px){
-  .nav-links{gap:15px;}
-  .nav-links a{font-size:15px;}
-  .hero-content h1{font-size:3rem;}
-  .hero-content h3{font-size:1.3rem;}
+/* Navbar عصري شفاف + ألوان دافئة */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 90px;
+  background: rgba(249, 245, 240, 0.78);     /* شفافية خفيفة زي اللي بالصورة */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(210, 180, 140, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
+
+/* الشعار */
+.navbar .logo { height: 68px; border-radius: 12px; }
+
+/* القوائم في الوسط */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 38px;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #5d4037;
+  font-weight: 600;
+  font-size: 17px;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a:hover {
+  color: #8d6e63;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0; height: 2px;
+  bottom: -6px; right: 0;
+  background: #ffb74d;
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; left: 0; right: auto; }
+
+/* أيقونة السلة */
+.cart-icon {
+  font-size: 26px;
+  color: #8d6e63;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.cart-icon:hover { transform: scale(1.15); }
+
+/* زر تسجيل الدخول (يمين فوق زي الصورة بالضبط) */
+#login-btn {
+  background: #ffb74d;
+  color: #3e2723;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 183, 77, 0.4);
+  transition: all 0.3s;
+}
+#login-btn:hover {
+  background: #ffcc80;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 183, 77, 0.5);
+}
+
+/* أيقونة المستخدم بعد الدخول */
+.user-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #ffb74d;
+  color: #3e2723;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 183, 77, 0.4);
+}
+
+/* Hero Section */
+.section-hero-wrap {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.slider {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+}
+.slide {
