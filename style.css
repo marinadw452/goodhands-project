@@ -112,3 +112,26 @@ body {
   top: 0; left: 0; width: 100%; height: 100%;
 }
 .slide {
+/* اللوجو يبرز لما تضغط عليه */
+.logo-link {
+  display: block;
+  transition: all 0.3s ease;
+}
+.logo-link:hover .logo,
+.logo-link:active .logo {
+  transform: scale(1.08);
+  filter: drop-shadow(0 8px 20px rgba(255, 183, 77, 0.5));
+}
+
+/* Sidebar من اليسار (زي الصورة بالضبط) */
+#sidebar-login {
+  right: auto;
+  left: -420px;
+  transition: left 0.4s ease;
+}
+#sidebar-login.open {
+  left: 0;
+}
+
+/* تحسين أزرار الهوفر */
+.nav-links a:hover { color: #ffb74d; }
