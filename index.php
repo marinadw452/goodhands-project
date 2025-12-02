@@ -1,5 +1,6 @@
-<?php require_once 'db.php'; 
-// كل شيء متعلق بالداتابيس محذوف تمامًا
+```php
+<?php
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,6 @@
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar">
   <img src="images/LOGO.png" class="logo" alt="شعار">
   <ul class="nav-links">
@@ -20,29 +20,24 @@
     <li><a href="#">نساء</a></li>
     <li><a href="#">رجالي</a></li>
     <li><a href="#">أثاث</a></li>
-    <li><a href="#">حول</a></li>
+    <li><a href="#">حول</a</li>
     <li><a href="#">الاتصال</a></li>
   </ul>
   <div class="cart-icon">Cart</div>
-  
-  <!-- اختار واحد من الاثنين:
-      إما يظهر زر تسجيل الدخول (غير شغال)
-      أو يظهر أيقونة مستخدم وهمية -->
-      
-  <!-- خيار 1: زر تسجيل الدخول (مثل ما كان) -->
-  <button id="login-btn">تسجيل الدخول</button>
 
-  <!-- خيار 2: أيقونة مستخدم وهمية (شيل التعليق لو تبيها) -->
-  <!--
-  <div class="user-icon">م</div>
-  <ul class="user-menu">
-    <li>محمد</li>
-    <li><a href="#">تسجيل خروج</a></li>
-  </ul>
-  -->
+  <?php if (isset($_SESSION['username'])): ?>
+    <div class="user-icon" title="<?= $_SESSION['username'] ?>">
+      <?= strtoupper(substr($_SESSION['username'], 0, 1)) ?>
+    </div>
+    <ul class="user-menu">
+      <li><?= htmlspecialchars($_SESSION['username']) ?></li>
+      <li><a href="logout.php">تسجيل الخروج</a></li>
+    </ul>
+  <?php else: ?>
+    <button id="login-btn">تسجيل الدخول</button>
+  <?php endif; ?>
 </nav>
 
-<!-- Hero + Slider -->
 <section class="section-hero-wrap">
   <div class="slider">
     <img src="images/4.png" class="slide active" alt="">
@@ -58,4 +53,25 @@
   </div>
 </section>
 
-<!-- Sidebar Login (يفتح ويشتغل عادي، بس ما يرس
+<!-- Sidebar تسجيل الدخول -->
+<div id="sidebar-login">
+  <button class="close-btn">×</button>
+  <form action="login.php" method="post">
+    <h2>تسجيل الدخول</h2>
+    <input type="text" name="username" placeholder="اسم المستخدم" required>
+    <input type="password" name="password" placeholder="كلمة المرور" required>
+    <button type="submit" class="submit">دخول</button>
+  </form>
+  <a href="sign-up.php" class="signup-link">إنشاء حساب جديد</a>
+</div>
+
+<script src="script.js"></script>
+<script src="golden-air.js"></script>
+<script>
+  const sidebar = document.getElementById('sidebar-login');
+  document.getElementById('login-btn')?.addEventListener('click', () => sidebar.classList.add('open'));
+  document.querySelector('.close-btn').addEventListener('click', () => sidebar.classList.remove('open'));
+  document.querySelector('.user-icon')?.addEventListener('click', () => document.querySelector('.user-menu').classList.toggle('active'));
+</script>
+</body>
+</html>
