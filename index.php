@@ -1,20 +1,5 @@
 <?php require_once 'db.php'; 
-
-$error = "";
-if (isset($_POST['login'])) {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = $_POST['password'];
-    
-    $res = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
-    if ($row = mysqli_fetch_assoc($res)) {
-        if (password_verify($password, $row['password'])) {
-            $_SESSION['username'] = $username;
-            header("Location: index.php");
-            exit;
-        }
-    }
-    $error = "بيانات غير صحيحة";
-}
+// كل شيء متعلق بالداتابيس محذوف تمامًا
 ?>
 
 <!DOCTYPE html>
@@ -40,15 +25,21 @@ if (isset($_POST['login'])) {
   </ul>
   <div class="cart-icon">Cart</div>
   
-  <?php if (isset($_SESSION['username'])): ?>
-    <div class="user-icon"><?= strtoupper(substr($_SESSION['username'],0,1)) ?></div>
-    <ul class="user-menu">
-      <li><?= htmlspecialchars($_SESSION['username']) ?></li>
-      <li><a href="logout.php">تسجيل خروج</a></li>
-    </ul>
-  <?php else: ?>
-    <button id="login-btn">تسجيل الدخول</button>
-  <?php endif; ?>
+  <!-- اختار واحد من الاثنين:
+      إما يظهر زر تسجيل الدخول (غير شغال)
+      أو يظهر أيقونة مستخدم وهمية -->
+      
+  <!-- خيار 1: زر تسجيل الدخول (مثل ما كان) -->
+  <button id="login-btn">تسجيل الدخول</button>
+
+  <!-- خيار 2: أيقونة مستخدم وهمية (شيل التعليق لو تبيها) -->
+  <!--
+  <div class="user-icon">م</div>
+  <ul class="user-menu">
+    <li>محمد</li>
+    <li><a href="#">تسجيل خروج</a></li>
+  </ul>
+  -->
 </nav>
 
 <!-- Hero + Slider -->
@@ -67,26 +58,4 @@ if (isset($_POST['login'])) {
   </div>
 </section>
 
-<!-- Sidebar Login -->
-<div id="sidebar-login">
-  <button class="close-btn">×</button>
-  <form method="post">
-    <h2>تسجيل الدخول</h2>
-    <?php if($error): ?><div class="form-msg error"><?= $error ?></div><?php endif; ?>
-    <input type="text" name="username" placeholder="اسم المستخدم" required>
-    <input type="password" name="password" placeholder="كلمة المرور" required>
-    <button type="submit" name="login" class="submit">دخول</button>
-  </form>
-  <a href="sign-up.php" class="signup-link">إنشاء حساب جديد</a>
-</div>
-
-<script src="script.js"></script>
-<script src="golden-air.js"></script>
-<script>
-  const sidebar = document.getElementById('sidebar-login');
-  document.getElementById('login-btn')?.onclick = () => sidebar.classList.add('open');
-  document.querySelector('.close-btn').onclick = () => sidebar.classList.remove('open');
-  document.querySelector('.user-icon')?.onclick = () => document.querySelector('.user-menu').classList.toggle('active');
-</script>
-</body>
-</html>
+<!-- Sidebar Login (يفتح ويشتغل عادي، بس ما يرس
