@@ -2,25 +2,25 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>أيدي طيّبة</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php echo $page_title ?? 'أيدي طيّبة'; ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar">
   <div class="container nav-container">
-    <!-- زر تسجيل الدخول (يسار) -->
+    <!-- تسجيل الدخول (يسار) -->
     <div id="auth-section">
       <?php if(isset($_SESSION['username'])): ?>
-        <div class="user-icon" title="<?= $_SESSION['username'] ?>">
+        <div class="user-icon" title="<?= htmlspecialchars($_SESSION['username']) ?>">
           <?= strtoupper(substr($_SESSION['username'],0,1)) ?>
         </div>
         <div class="user-menu">
-          <p><?= $_SESSION['username'] ?></p>
+          <p><?= htmlspecialchars($_SESSION['username']) ?></p>
           <a href="logout.php">تسجيل الخروج</a>
         </div>
       <?php else: ?>
@@ -28,14 +28,14 @@
       <?php endif; ?>
     </div>
 
-    <!-- القوائم (وسط) -->
+    <!-- القوائم -->
     <ul class="nav-links">
-      <li><a href="index.php">الرئيسية</a></li>
+      <li><a href="index.php" <?php if(basename($_SERVER['PHP_SELF'])=='index.php') echo 'class="active"'; ?>>الرئيسية</a></li>
       <li><a href="#">نساء</a></li>
       <li><a href="#">رجالي</a></li>
       <li><a href="#">أثاث</a></li>
-      <li><a href="about.php">حول</a></li>
-      <li><a href="contact.php">الاتصال</a></li>
+      <li><a href="about.php" <?php if(basename($_SERVER['PHP_SELF'])=='about.php') echo 'class="active"'; ?>>حول</a></li>
+      <li><a href="contact.php" <?php if(basename($_SERVER['PHP_SELF'])=='contact.php') echo 'class="active"'; ?>>الاتصال</a></li>
     </ul>
 
     <!-- اللوجو (يمين) -->
@@ -45,23 +45,7 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="slider">
-    <img src="images/4.png" class="slide active" alt="">
-    <img src="images/123.png" class="slide" alt="">
-    <img src="images/11.png" class="slide" alt="">
-    <img src="images/14.png" class="slide" alt="">
-  </div>
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>أيدي طيّبة</h1>
-    <p>كل قطعة تعكس إبداع صانعها.</p>
-    <button class="btn">تصفح الآن</button>
-  </div>
-</section>
-
-<!-- Sidebar Login -->
+<!-- Sidebar Login (موجود في كل الصفحات) -->
 <div id="sidebar-login">
   <button class="close-btn">×</button>
   <div class="login-form">
@@ -74,7 +58,3 @@
     <a href="sign-up.php" class="signup-link">إنشاء حساب جديد</a>
   </div>
 </div>
-
-<script src="script.js"></script>
-</body>
-</html>
