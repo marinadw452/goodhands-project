@@ -1,12 +1,50 @@
 <?php
 session_start();
+
+// ربط MySQL تلقائي من Railway Variables
+$host = $_ENV["MYSQLHOST"] ?? "mysql.railway.internal";
+$db   = $_ENV["MYSQLDATABASE"] ?? "railway";
+$user = $_ENV["MYSQLUSER"] ?? "root";
+$pass = $_ENV["MYSQLPASSWORD"] ?? "";
+$port = $_ENV["MYSQLPORT"] ?? "3306";
+
+$conn = mysqli_connect($host, $user, $pass, $db, $port);
+
+if (!$conn) {
+    die("فشل الاتصال: " . mysqli_connect_error());
+}
+
+// إنشاء جدول users تلقائيًا
+mysqli_query($conn, "CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)");
+
+// تسجيل الدخول
+if ($_POST['login'] ?? false) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = $_POST['password'];
+
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
+    if ($row = mysqli_fetch_assoc($res)) {
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['username'] = $username;
+            header("Location: index.php");
+            exit;
+        }
+    }
+    $error = "اسم المستخدم أو كلمة المرور خطأ";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Good Hands</title>
+  <title>أيدي طيّبة</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,67 +52,57 @@ session_start();
 <nav class="navbar">
   <img src="images/LOGO.png" class="logo" alt="Logo">
   <ul class="nav-links">
-    <li><a href="#" class="fade-link">الرئيسية</a></li>
-    <li><a href="#" class="fade-link">نساء</a></li>
-    <li><a href="#" class="fade-link">رجالي</a></li>
-    <li><a href="#" class="fade-link">أثاث</a></li>
-    <li><a href="#" class="fade-link">حول</a></li>
-    <li><a href="#" class="fade-link">الاتصال</a></li>
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">نساء</a></li>
+    <li><a href="#">رجالي</a></li>
+    <li><a href="#">أثاث</a></li>
+    <li><a href="#">حول</a></li>
+    <li><a href="#">الاتصال</a></li>
   </ul>
-
-  <div class="cart-icon">🛒</div>
-
-  <div id="auth-section">
-    <?php if(isset($_SESSION['username'])): ?>
-      <div class="user-icon" title="<?php echo htmlspecialchars($_SESSION['username']); ?>">
-        <?php echo strtoupper(htmlspecialchars($_SESSION['username'][0])); ?>
-      </div>
-      <ul class="user-menu">
-        <li><?php echo htmlspecialchars($_SESSION['username']); ?></li>
-        <li><a href="logout.php">تسجيل الخروج</a></li>
-      </ul>
-    <?php else: ?>
-      <!-- زر صغير ظاهر على اليسار (css يتحكم بالموقع) -->
-      <button id="login-btn">تسجيل الدخول</button>
-    <?php endif; ?>
-  </div>
+  <?php if (isset($_SESSION['username'])): ?>
+    <div class="user-icon"><?= strtoupper($_SESSION['username'][0]) ?></div>
+  <?php else: ?>
+    <button id="login-btn">تسجيل الدخول</button>
+  <?php endif; ?>
 </nav>
 
+<!-- باقي الصفحة زي ما هي -->
 <section class="section-hero-wrap">
   <div class="slider">
-    <img src="images/4.png" class="slide active" alt="صورة 1">
-    <img src="images/123.png" class="slide" alt="صورة 2">
-    <img src="images/11.png" class="slide" alt="صورة 3">
-    <img src="images/14.png" class="slide" alt="صورة 4">
+    <img src="images/4.png" class="slide active" alt="">
+    <img src="images/123.png" class="slide" alt="">
+    <img src="images/11.png" class="slide" alt="">
+    <img src="images/14.png" class="slide" alt="">
   </div>
-  <div class="overlay"></div>
-
   <div class="hero-content">
-    <h1>أيدي طيّبه</h1>
-    <h3>كل قطعة تعكس إبداع صانعها.</h3>
-    <button class="btn">تصفح</button>
+    <h1>أيدي طيّبة</h1>
+    <h3>كل قطعة تحكي قصة إبداع</h3>
+    <button class="btn">تصفح الآن</button>
   </div>
 </section>
 
-<!-- القائمة الجانبية لتسجيل الدخول (مخبأة افتراضياً) -->
-<div id="sidebar-login" aria-hidden="true">
-  <button class="close-btn" id="close-sidebar">&times;</button>
-
-  <form id="login-form">
+<!-- نافذة تسجيل الدخول -->
+<div id="sidebar-login" style="display:none;">
+  <button class="close-btn">&times;</button>
+  <form method="post">
     <h2>تسجيل الدخول</h2>
-
-    <div id="login-msg" class="form-msg" style="display:none"></div>
-
-    <input type="text" name="username" id="login-username" placeholder="اسم المستخدم" required>
-    <input type="password" name="password" id="login-password" placeholder="كلمة المرور" required>
-
-    <button type="submit" class="submit">دخول</button>
+    <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+    <input type="text" name="username" placeholder="اسم المستخدم" required>
+    <input type="password" name="password" placeholder="كلمة المرور" required>
+    <button type="submit" name="login">دخول</button>
   </form>
-
-  <a class="signup-link" href="sign-up.php">تسجيل جديد</a>
+  <a href="sign-up.php">إنشاء حساب جديد</a>
 </div>
 
 <script src="script.js"></script>
 <script src="golden-air.js"></script>
+<script>
+  document.getElementById('login-btn')?.addEventListener('click', () => {
+    document.getElementById('sidebar-login').style.display = 'block';
+  });
+  document.querySelector('.close-btn').addEventListener('click', () => {
+    document.getElementById('sidebar-login').style.display = 'none';
+  });
+</script>
 </body>
 </html>
