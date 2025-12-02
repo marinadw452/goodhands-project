@@ -3,5 +3,16 @@
     "php": "^8.2",
     "ext-mysqli": "*",
     "ext-pdo_mysql": "*"
+  },
+  "config": {
+    "platform": {
+      "ext-mysqli": "8.2",
+      "ext-pdo_mysql": "8.2"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@php -S 0.0.0.0:${PORT:-8080} -t ."
+    ]
   }
 }
