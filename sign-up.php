@@ -1,30 +1,30 @@
-<?php require_once 'db.php'; 
-$error = $success = "";
+<?php
+session_start();
 
-if (isset($_POST['signup'])) {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    
-    $check = mysqli_query($conn, "SELECT id FROM users WHERE username='$username'");
-    if (mysqli_num_rows($check) > 0) {
-        $error = "الاسم مستخدم من قبل";
+if ($_POST) {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+
+    if (strlen($username) < 3) {
+        $error = "الاسم قصير جدًا";
+    } elseif (strlen($password) < 4) {
+        $error = "كلمة المرور ضعيفة";
     } else {
-        mysqli_query($conn, "INSERT INTO users (username, password) VALUES ('$username', '$password')");
-        $success = "تم إنشاء الحساب! جاري تحويلك...";
         $_SESSION['username'] = $username;
-        echo "<script>setTimeout(()=>location='index.php', 1500)</script>";
+        // هنا ممكن نحفظ في ملف txt لو تبي، بس حاليًا في السيشن بس
+        header("Location: index.php");
+        exit;
     }
 }
 ?>
 
-<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="UTF-8"><title>إنشاء حساب</title><link rel="stylesheet" href="style.css"></head><body style="text-align:center;padding:50px;">
-<h2>إنشاء حساب جديد</h2>
-<?php if($error): ?><div class="form-msg error"><?= $error ?></div><?php endif; ?>
-<?php if($success): ?><div class="form-msg success"><?= $success ?></div><?php endif; ?>
+<!DOCTYPE html><html dir="rtl"><head><meta charset="UTF-8"><title>إنشاء حساب</title><link rel="stylesheet" href="style.css"></head><body style="text-align:center;padding:100px;background:#111;color:#fff;">
+<h2>إنشاء حساب جديد (بدون داتابيس)</h2>
+<?php if(isset($error)) echo "<p style='color:red'>$error</p>"; ?>
 <form method="post">
   <input type="text" name="username" placeholder="اسم المستخدم" required><br><br>
   <input type="password" name="password" placeholder="كلمة المرور" required><br><br>
-  <button type="submit" name="signup" class="submit">تسجيل</button>
+  <button type="submit" style="padding:10px 20px;background:#eec857;border:none;border-radius:8px;">إنشاء الحساب</button>
 </form>
-<a href="index.php">العودة للرئيسية</a>
+<br><a href="index.php">العودة</a>
 </body></html>
