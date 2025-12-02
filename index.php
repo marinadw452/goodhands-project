@@ -10,6 +10,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>أيدي طيّبة</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -75,3 +76,4 @@ session_start();
 </script>
 </body>
 </html>
+
