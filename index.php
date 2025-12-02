@@ -1,32 +1,10 @@
-<?php
-session_start();
+<?php require_once 'db.php'; 
 
-// ربط MySQL تلقائي من Railway Variables
-$host = $_ENV["MYSQLHOST"] ?? "mysql.railway.internal";
-$db   = $_ENV["MYSQLDATABASE"] ?? "railway";
-$user = $_ENV["MYSQLUSER"] ?? "root";
-$pass = $_ENV["MYSQLPASSWORD"] ?? "";
-$port = $_ENV["MYSQLPORT"] ?? "3306";
-
-$conn = mysqli_connect($host, $user, $pass, $db, $port);
-
-if (!$conn) {
-    die("فشل الاتصال: " . mysqli_connect_error());
-}
-
-// إنشاء جدول users تلقائيًا
-mysqli_query($conn, "CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)");
-
-// تسجيل الدخول
-if ($_POST['login'] ?? false) {
+$error = "";
+if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = $_POST['password'];
-
+    
     $res = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
     if ($row = mysqli_fetch_assoc($res)) {
         if (password_verify($password, $row['password'])) {
@@ -35,7 +13,7 @@ if ($_POST['login'] ?? false) {
             exit;
         }
     }
-    $error = "اسم المستخدم أو كلمة المرور خطأ";
+    $error = "بيانات غير صحيحة";
 }
 ?>
 
@@ -49,8 +27,9 @@ if ($_POST['login'] ?? false) {
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
-  <img src="images/LOGO.png" class="logo" alt="Logo">
+  <img src="images/LOGO.png" class="logo" alt="شعار">
   <ul class="nav-links">
     <li><a href="#">الرئيسية</a></li>
     <li><a href="#">نساء</a></li>
@@ -59,14 +38,20 @@ if ($_POST['login'] ?? false) {
     <li><a href="#">حول</a></li>
     <li><a href="#">الاتصال</a></li>
   </ul>
+  <div class="cart-icon">Cart</div>
+  
   <?php if (isset($_SESSION['username'])): ?>
-    <div class="user-icon"><?= strtoupper($_SESSION['username'][0]) ?></div>
+    <div class="user-icon"><?= strtoupper(substr($_SESSION['username'],0,1)) ?></div>
+    <ul class="user-menu">
+      <li><?= htmlspecialchars($_SESSION['username']) ?></li>
+      <li><a href="logout.php">تسجيل خروج</a></li>
+    </ul>
   <?php else: ?>
     <button id="login-btn">تسجيل الدخول</button>
   <?php endif; ?>
 </nav>
 
-<!-- باقي الصفحة زي ما هي -->
+<!-- Hero + Slider -->
 <section class="section-hero-wrap">
   <div class="slider">
     <img src="images/4.png" class="slide active" alt="">
@@ -74,35 +59,34 @@ if ($_POST['login'] ?? false) {
     <img src="images/11.png" class="slide" alt="">
     <img src="images/14.png" class="slide" alt="">
   </div>
+  <div class="overlay"></div>
   <div class="hero-content">
     <h1>أيدي طيّبة</h1>
-    <h3>كل قطعة تحكي قصة إبداع</h3>
+    <h3>كل قطعة تعكس إبداع صانعها</h3>
     <button class="btn">تصفح الآن</button>
   </div>
 </section>
 
-<!-- نافذة تسجيل الدخول -->
-<div id="sidebar-login" style="display:none;">
-  <button class="close-btn">&times;</button>
+<!-- Sidebar Login -->
+<div id="sidebar-login">
+  <button class="close-btn">×</button>
   <form method="post">
     <h2>تسجيل الدخول</h2>
-    <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+    <?php if($error): ?><div class="form-msg error"><?= $error ?></div><?php endif; ?>
     <input type="text" name="username" placeholder="اسم المستخدم" required>
     <input type="password" name="password" placeholder="كلمة المرور" required>
-    <button type="submit" name="login">دخول</button>
+    <button type="submit" name="login" class="submit">دخول</button>
   </form>
-  <a href="sign-up.php">إنشاء حساب جديد</a>
+  <a href="sign-up.php" class="signup-link">إنشاء حساب جديد</a>
 </div>
 
 <script src="script.js"></script>
 <script src="golden-air.js"></script>
 <script>
-  document.getElementById('login-btn')?.addEventListener('click', () => {
-    document.getElementById('sidebar-login').style.display = 'block';
-  });
-  document.querySelector('.close-btn').addEventListener('click', () => {
-    document.getElementById('sidebar-login').style.display = 'none';
-  });
+  const sidebar = document.getElementById('sidebar-login');
+  document.getElementById('login-btn')?.onclick = () => sidebar.classList.add('open');
+  document.querySelector('.close-btn').onclick = () => sidebar.classList.remove('open');
+  document.querySelector('.user-icon')?.onclick = () => document.querySelector('.user-menu').classList.toggle('active');
 </script>
 </body>
 </html>
