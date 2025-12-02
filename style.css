@@ -117,3 +117,18 @@ body { font-family: 'Tajawal', sans-serif; background:#f9f5f0; color:#3e2723; ov
 }
 .submit:hover { background:#ffcc80; }
 .signup-link { display:block; margin-top:25px; color:#ba7d37; font-weight:bold; text-decoration:none; }
+/* قسم المنتجات المميزة في الرئيسية */
+.featured-products {
+  background: #fdf9f3;
+  padding: 60px 0;
+  margin-top: -50px;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
