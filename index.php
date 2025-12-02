@@ -1,30 +1,13 @@
-```php
-<?php
-session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أيدي طيّبة</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
-
 <nav class="navbar">
   <img src="images/LOGO.png" class="logo" alt="شعار">
   <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
+    <li><a href="index.php">الرئيسية</a></li>
     <li><a href="#">نساء</a></li>
     <li><a href="#">رجالي</a></li>
     <li><a href="#">أثاث</a></li>
-    <li><a href="#">حول</a</li>
-    <li><a href="#">الاتصال</a></li>
+    <li><a href="about.php">حول</a></li>
+    <li><a href="contact.php">تواصل</a></li>
   </ul>
-  <div class="cart-icon">Cart</div>
 
   <?php if (isset($_SESSION['username'])): ?>
     <div class="user-icon" title="<?= $_SESSION['username'] ?>">
@@ -38,42 +21,3 @@ session_start();
     <button id="login-btn">تسجيل الدخول</button>
   <?php endif; ?>
 </nav>
-
-<section class="section-hero-wrap">
-  <div class="slider">
-    <img src="images/4.png" class="slide active" alt="">
-    <img src="images/123.png" class="slide" alt="">
-    <img src="images/11.png" class="slide" alt="">
-    <img src="images/14.png" class="slide" alt="">
-  </div>
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>أيدي طيّبة</h1>
-    <h3>كل قطعة تعكس إبداع صانعها</h3>
-    <button class="btn">تصفح الآن</button>
-  </div>
-</section>
-
-<!-- Sidebar تسجيل الدخول -->
-<div id="sidebar-login">
-  <button class="close-btn">×</button>
-  <form action="login.php" method="post">
-    <h2>تسجيل الدخول</h2>
-    <input type="text" name="username" placeholder="اسم المستخدم" required>
-    <input type="password" name="password" placeholder="كلمة المرور" required>
-    <button type="submit" class="submit">دخول</button>
-  </form>
-  <a href="sign-up.php" class="signup-link">إنشاء حساب جديد</a>
-</div>
-
-<script src="script.js"></script>
-<script src="golden-air.js"></script>
-<script>
-  const sidebar = document.getElementById('sidebar-login');
-  document.getElementById('login-btn')?.addEventListener('click', () => sidebar.classList.add('open'));
-  document.querySelector('.close-btn').addEventListener('click', () => sidebar.classList.remove('open'));
-  document.querySelector('.user-icon')?.addEventListener('click', () => document.querySelector('.user-menu').classList.toggle('active'));
-</script>
-</body>
-</html>
-
