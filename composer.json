@@ -1,11 +1,7 @@
 {
   "require": {
     "php": "^8.2",
-    "ext-pdo": "*",
-    "ext-pgsql": "*"
-  },
-  "scripts": {
-    "start": "php -S 0.0.0.0:${PORT:-8080}"
+    "ext-mysqli": "*",
+    "ext-pdo_mysql": "*"
   }
 }
-
