@@ -75,7 +75,7 @@ include 'includes/header.php';
 <!-- تحميل الـ CSS والـ JS الخاص بالصفحة الرئيسية فقط -->
 <link rel="stylesheet" href="assets/css/slider.css">
 <link rel="stylesheet" href="assets/css/home.css">
-
+<link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/wave-bg.js"></script>
 <script src="assets/js/slider.js"></script>
 <script src="assets/js/cart.js"></script>
@@ -84,3 +84,4 @@ include 'includes/header.php';
 // تفعيل AOS فقط في الصفحة الرئيسية
 AOS.init({ duration: 1000, once: true });
 </script>
+
