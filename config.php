@@ -1,19 +1,13 @@
 <?php
-// جلب المتغيرات من البيئة
-$host = getenv("PGHOST");
-$port = getenv("PGPORT");
-$user = getenv("PGUSER");
-$password = getenv("PGPASSWORD");
-$dbname = getenv("PGDATABASE");
+$host = getenv("MYSQLHOST");
+$port = getenv("MYSQLPORT");
+$user = getenv("MYSQLUSER");
+$pass = getenv("MYSQLPASSWORD");
+$db   = getenv("MYSQLDATABASE");
 
-// بناء سلسلة الاتصال
-$conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
-
-// الاتصال
-$conn = pg_connect($conn_string);
+$conn = mysqli_connect($host, $user, $pass, $db, $port);
 
 if (!$conn) {
-    die("❌ فشل الاتصال بقاعدة البيانات: " . pg_last_error());
+    die("فشل الاتصال بقاعدة البيانات: " . mysqli_connect_error());
 }
-
-// echo "تم الاتصال بنجاح";
+?>
