@@ -8,15 +8,9 @@ $port = getenv("MYSQLPORT");
 $conn = new mysqli($host, $user, $password, $database, $port);
 
 if ($conn->connect_error) {
-    die("❌ فشل الاتصال: " . $conn->connect_error);
+    error_log("❌ فشل الاتصال: " . $conn->connect_error);
+    die("فشل الاتصال");
 }
-echo "✅ تم الاتصال بنجاح بقاعدة البيانات!";
+error_log("✅ تم الاتصال بنجاح بقاعدة البيانات في Railway!");
 
-$result = $conn->query("SELECT 1");
-if ($result) {
-    echo " | نتيجة الاستعلام: ";
-    print_r($result->fetch_assoc());
-}
-
-$conn->close();
 ?>
