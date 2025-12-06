@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     error_log("❌ فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
     die("فشل الاتصال بقاعدة البيانات");
 } else {
-    error_log("✅ تم الاتصال بنجاح بقاعدة البيانات: $database على $host:$port بواسطة المستخدم $user");
+    error_log("✅ تم الاتصال بنجاح بقاعدة البيانات: $database على $host:$port بواسطة $user");
 }
 
 return $conn;
