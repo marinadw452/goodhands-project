@@ -13,4 +13,10 @@ if ($conn->connect_error) {
 }
 error_log("✅ تم الاتصال بنجاح بقاعدة البيانات في Railway!");
 
+$result = $conn->query("SELECT 1");
+if ($result) {
+    error_log("🔎 نتيجة الاستعلام: " . json_encode($result->fetch_assoc()));
+}
+
+$conn->close();
 ?>
