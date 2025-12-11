@@ -1,14 +1,18 @@
 <?php
-$host = getenv("MYSQLHOST");
-$port = getenv("MYSQLPORT");
-$user = getenv("MYSQLUSER");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+$host = getenv("MYSQLHOST") ?: "127.0.0.1";
+$port = getenv("MYSQLPORT") ?: "3306";
+$user = getenv("MYSQLUSER") ?: "root";
 $pass = getenv("MYSQLPASSWORD");
-$db   = getenv("MYSQLDATABASE");
 
-$conn = mysqli_connect($host, $user, $pass, $db, $port);
+// في XAMPP غالبًا كلمة المرور فاضية
+if ($pass === false || $pass === null) $pass = "";
+$db   = getenv("MYSQLDATABASE") ?: "railway";
 
-if (!$conn) {
-    die("فشل الاتصال بقاعدة البيانات: " . mysqli_connect_error());
-}
-echo "تم الاتصال بنجاح";
+$conn = mysqli_connect($host, $user, $pass, $db, (int)$port);
+mysqli_set_charset($conn, "utf8mb4");
+
+// احذفي echo بعد ما تتأكدي
+// echo "تم الاتصال بنجاح";
 ?>
